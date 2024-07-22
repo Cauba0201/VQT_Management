@@ -9,3 +9,14 @@ th, td {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+body, html, #root {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .MuiBox-root {
+    position: relative;
+    overflow: hidden;
+  }

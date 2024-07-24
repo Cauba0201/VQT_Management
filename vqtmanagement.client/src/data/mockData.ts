@@ -1,4 +1,10 @@
 import { tokens } from "../theme";
+import av1 from "../assets/images/cover-1.png"
+import av2 from "../assets/images/cover-2.png"
+import av3 from "../assets/images/cover-3.png"
+import av4 from "../assets/images/cover-4.png"
+import av5 from "../assets/images/cover-5.png"
+
 
 export const mockDataTeam = [
   {
@@ -1279,5 +1285,72 @@ export const mockGeographyData = [
   {
     id: "KOR",
     value: 171135,
+  },
+];
+
+export const newItems = [
+  {
+    title: "The Future of Renewable Energy: Innovations and Challenges Ahead",
+    description:
+      "The sun slowly set over the horizon, painting the sky in vibrant hues of orange and pink.",
+    time: "4 hours",
+    avatar: {av1},
+  },
+  {
+    title:
+      "Exploring the Impact of Artificial Intelligence on Modern Healthcare",
+    description:
+      "She eagerly opened the gift, her eyes sparkling with excitement.",
+    time: "a day",
+    avatar: {av2},
+  },
+  {
+    title: "Climate Change and Its Effects on Global Food Security",
+    description:
+      "The old oak tree stood tall and majestic, its branches swaying gently in the breeze.",
+    time: "2 days",
+    avatar: {av3},
+  },
+  {
+    title: "The Rise of Remote Work: Benefits, Challenges, and Future Trends",
+    description:
+      "The aroma of freshly brewed coffee filled the air, awakening my senses.",
+    time: "3 days",
+    avatar: {av4},
+  },
+  {
+    title: "Understanding Blockchain Technology: Beyond Cryptocurrency",
+    description:
+      "The children giggled with joy as they ran through the sprinklers on a hot summer day.",
+    time: "4 days",
+    avatar: {av5},
+  },
+];
+
+export const orderTimelineItems = [
+  {
+    status: "1983, orders, $4220",
+    time: "24 Jul 2024 10:21 am",
+    color: "green",
+  },
+  {
+    status: "12 Invoices have been paid",
+    time: "23 Jul 2024 9:21 am",
+    color: "green",
+  },
+  {
+    status: "Order #37745 from September",
+    time: "22 Jul 2024 8:21 am",
+    color: "blue",
+  },
+  {
+    status: "New order placed #XF-2356",
+    time: "21 Jul 2024 7:21 am",
+    color: "orange",
+  },
+  {
+    status: "New order placed #XF-2346",
+    time: "20 Jul 2024 6:21 am",
+    color: "red",
   },
 ];

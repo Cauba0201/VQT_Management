@@ -5,6 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import LineChart from "../common/LineChart";
 import BarChart from "../common/BarChart";
 import PieChart from "../common/PieChart";
+import NewItems from "../common/NewItems";
 
 // import NoContent from "./NoContentPage/NoContent";
 
@@ -185,7 +186,7 @@ const HomeMain = () => {
         >
           <Box display="flex" gap={1}>
             <Typography variant="h5" fontWeight="500">
-              Bar Chart 
+              Bar Chart
             </Typography>
             <Typography variant="h5" fontWeight="500">
               Campaign
@@ -204,7 +205,7 @@ const HomeMain = () => {
         >
           <Box display="flex" gap={1}>
             <Typography variant="h5" fontWeight="500">
-              Pie Chart 
+              Pie Chart
             </Typography>
             <Typography variant="h5" fontWeight="500">
               Campaign
@@ -223,7 +224,7 @@ const HomeMain = () => {
         >
           <Box display="flex" gap={1}>
             <Typography variant="h5" fontWeight="500">
-              Pie Chart 
+              Pie Chart
             </Typography>
             <Typography variant="h5" fontWeight="500">
               Campaign
@@ -242,7 +243,7 @@ const HomeMain = () => {
         >
           <Box display="flex" gap={1}>
             <Typography variant="h5" fontWeight="500">
-              Bar Chart 
+              Bar Chart
             </Typography>
             <Typography variant="h5" fontWeight="500">
               Campaign
@@ -254,8 +255,20 @@ const HomeMain = () => {
           </Box>
         </Box>
         {/* Row 4 */}
-
-        {/* <NoContent /> */}
+        <Box
+          gridColumn="span 18"
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+            display="grid"
+            gridTemplateColumns="repeat(18, 1fr)"
+            gridAutoRows="130px"
+            gap="20px"
+          >
+            {/* <NewItems /> */}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

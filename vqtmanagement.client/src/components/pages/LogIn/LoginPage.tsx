@@ -4,11 +4,14 @@ import {
   Button, // cpn nut bấm
   IconButton, // cpn nút bấm dưới dạng icon
   InputAdornment,
-  Avatar, // cpn avatar
+  Avatar,
+  Dialog,
+  DialogTitle,
+  DialogContent, // cpn avatar
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
-import backGroundLogin from "../../../assets/images/background-network.png";
+import backGroundLogin from "../../../assets/images/background_light_2023.jpg";
 import logo_login from "../../../assets/images/VQT Managementt.png";
 import SendIcon from "@mui/icons-material/Send";
 import { useTranslation } from "react-i18next";
@@ -17,6 +20,7 @@ const LoginPage = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event: { preventDefault: () => void }) => {
@@ -24,6 +28,9 @@ const LoginPage = () => {
   };
   const handleChangeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
   return (
@@ -57,12 +64,15 @@ const LoginPage = () => {
         </Box>
         <TextField
           fullWidth
+          type="email"
           label={t("username")}
           margin="normal"
           color="error"
+          required
         />
         <TextField
           fullWidth
+          required
           label={t("password")}
           type={showPassword ? "text" : "password"}
           margin="normal"
@@ -91,37 +101,44 @@ const LoginPage = () => {
             mt: 2,
             mb: 2,
           }}
+          onClick={handleClickOpen}
         >
           {t("login")}
         </Button>
-
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          component="form"
-          noValidate
-          autoComplete="off"
-          sx={{
-            "& > :not(style)": { m: 1, width: "25ch" },
-          }}
-        >
-          <TextField
-            id="outlined-basic"
-            label={t("inputOTP")}
-            size="small"
-            variant="outlined"
-            color="error"
-          />
-          <Button
-            variant="contained"
-            color="error"
-            type="submit"
-            sx={{ fontSize: "11px" }}
-            endIcon={<SendIcon />}
+        <Dialog open={open}>
+          <DialogTitle>{t("titleOTP")}</DialogTitle>
+          <DialogContent>
+            {t("descriptionOTP")}
+          </DialogContent>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            component="form"
+            noValidate
+            autoComplete="off"
+            sx={{
+              "& > :not(style)": { m: 1, width: "25ch", marginLeft:"20px" },
+            }}
           >
-            {t("getOTP")}
-          </Button>
-        </Box>
+            <TextField
+              id="outlined-basic"
+              label={t("inputOTP")}
+              size="small"
+              variant="outlined"
+              color="error"
+            />
+            <Button
+              variant="contained"
+              color="error"
+              type="submit"
+              sx={{ fontSize: "11px" }}
+              endIcon={<SendIcon />}
+            >
+              {t("getOTP")}
+            </Button>
+          </Box>
+        </Dialog>
+        
         <Box display="flex" justifyContent="center" mt="20px" gap={1}>
           <Button
             color="error"

@@ -68,6 +68,14 @@ const appRoutes: RouteType[] = [
           displayText: "Signal And Quality",
         },
       },
+      {
+        path: "/signal/analyst",
+        element: <AnalyticsPage />,
+        state: "signal.analyst",
+        sidebarProps: {
+          displayText: "Analyst",
+        },
+      },
     ],
   },
   {

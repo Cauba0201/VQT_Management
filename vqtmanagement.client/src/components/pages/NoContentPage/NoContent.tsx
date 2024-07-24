@@ -7,11 +7,6 @@ const NoContent = () => {
   const colors = tokens(theme.palette.mode);
   return (
     <Box >
-      {/* <Avatar
-        sx={{ width: "100%", height: "100%" }}
-        variant="square"
-        src={NoContentImage}
-      /> */}
       <Typography
         variant="h4"
         component="h1"

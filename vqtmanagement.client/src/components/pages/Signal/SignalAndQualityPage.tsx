@@ -1,7 +1,11 @@
-import React from "react";
+import { Box } from "@mui/material";
 
 const SignalAndQualityPage = () => {
-  return <div>SignalAndQualityPage</div>;
+  return (
+    <Box m="0px 20px">
+      Signal and quality
+    </Box>
+  );
 };
 
 export default SignalAndQualityPage;

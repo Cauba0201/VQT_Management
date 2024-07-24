@@ -1,11 +1,11 @@
-import React from "react"
+import { Box } from "@mui/material";
 
 const AnalyticsPage = () => {
-    return (
-        <div>
-            Analyts Page
-        </div>
-    )
-}
+  return (
+    <Box m="0px 20px" >
+      Analyst Page
+    </Box>
+  );
+};
 
 export default AnalyticsPage;

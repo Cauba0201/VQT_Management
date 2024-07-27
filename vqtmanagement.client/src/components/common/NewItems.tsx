@@ -1,17 +1,17 @@
-import { ListItem, ListItemText, Avatar, ListItemAvatar } from "@mui/material";
-// import newItems from '../../data/mockData'
-const Props = {
-  title: string,
-  description: string,
-  time: string,
-  avatar: string,
-};
+import { ListItem, ListItemText, ListItemAvatar } from "@mui/material";
 
-const NewItems = ({ title, description, time, avatar }: Props) => {
+interface Props {
+  title: string;
+  description: string;
+  time: string;
+  avatar: unknown;
+}
+
+const NewItems: React.FC<Props> = ({ title, description, time }) => {
   return (
     <ListItem>
       <ListItemAvatar>
-        <Avatar src={avatar} />
+        {/* <Avatar src={avatar} /> */}
       </ListItemAvatar>
       <ListItemText
         primary={title}

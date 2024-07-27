@@ -59,6 +59,12 @@ export const tokens = (mode: string) => ({
           800: "#c3c6fd",
           900: "#e1e2fe",
         },
+        black: {
+          100: "#000000",
+        },
+        white: {
+          100: "#ffffff",
+        },
       }
     : {
         grey: {
@@ -115,6 +121,12 @@ export const tokens = (mode: string) => ({
           700: "#3e4396",
           800: "#2a2d64",
           900: "#151632",
+        },
+        black: {
+          100: "#000000",
+        },
+        white: {
+          100: "#ffffff",
         },
       }),
 });

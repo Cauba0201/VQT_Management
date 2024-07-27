@@ -8,7 +8,7 @@ const resources = {
     translation: {
       login: "Login",
       username: "Email",
-      getOTP: "Get OTP",
+      confirmOTP: "Confirm",
       password: "Password",
       inputOTP: "Input OTP",
       home: "Home",
@@ -23,7 +23,7 @@ const resources = {
     translation: {
       login: "Đăng Nhập",
       username: "Email",
-      getOTP: "Lấy OTP",
+      confirmOTP: "Xác nhận",
       password: "Mật khẩu",
       inputOTP: "Nhập OTP",
       home: "Trang chủ",

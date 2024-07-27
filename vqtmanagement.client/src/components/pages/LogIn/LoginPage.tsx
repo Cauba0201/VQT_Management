@@ -7,7 +7,11 @@ import {
   Avatar,
   Dialog,
   DialogTitle,
-  DialogContent, // cpn avatar
+  DialogContent,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  FormHelperText, // cpn avatar
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
@@ -15,12 +19,16 @@ import backGroundLogin from "../../../assets/images/background_light_2023.jpg";
 import logo_login from "../../../assets/images/VQT Managementt.png";
 import SendIcon from "@mui/icons-material/Send";
 import { useTranslation } from "react-i18next";
+import * as Yup from "yup";
+import { Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event: { preventDefault: () => void }) => {
@@ -32,6 +40,9 @@ const LoginPage = () => {
   const handleClickOpen = () => {
     setOpen(true);
   };
+  const handleConfirmDialog = () => {
+    navigate('/')
+  }
 
   return (
     <Box
@@ -62,36 +73,97 @@ const LoginPage = () => {
             sx={{ height: "70px", width: "250px" }}
           />
         </Box>
-        <TextField
-          fullWidth
-          type="email"
-          label={t("username")}
-          margin="normal"
-          color="error"
-          required
-        />
-        <TextField
-          fullWidth
-          required
-          label={t("password")}
-          type={showPassword ? "text" : "password"}
-          margin="normal"
-          color="error"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            ),
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+            submit: null,
           }}
-        />
+          validationSchema={Yup.object().shape({
+            email: Yup.string()
+              .email("Must be a valid email")
+              .max(255)
+              .required("Email is required"),
+            password: Yup.string().max(255).required("Password is required"),
+          })}
+        >
+          {({ errors, handleBlur, handleChange, touched, values }) => (
+            <form>
+              <FormControl
+                fullWidth
+                error={Boolean(touched.email && errors.email)}
+                sx={{ marginBottom: " 20px" }}
+              >
+                <InputLabel htmlFor="outlined-adornment-email-login">
+                  Email
+                </InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-email-login"
+                  type="email"
+                  value={values.email}
+                  name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  label="Email"
+                  inputProps={{}}
+                />
+                {touched.email && errors.email && (
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text-email-login"
+                  >
+                    {errors.email}
+                  </FormHelperText>
+                )}
+              </FormControl>
+              <FormControl
+                fullWidth
+                error={Boolean(touched.password && errors.password)}
+              >
+                <InputLabel htmlFor="outlined-adornment-password-login">
+                  Password
+                </InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password-login"
+                  type={showPassword ? "text" : "password"}
+                  value={values.password}
+                  name="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                        size="large"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                  inputProps={{}}
+                />
+                {touched.password && errors.password && (
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text-password-login"
+                  >
+                    {errors.password}
+                  </FormHelperText>
+                )}
+              </FormControl>
+              {errors.submit && (
+                <Box sx={{ mt: 3 }}>
+                  <FormHelperText error>{errors.submit}</FormHelperText>
+                </Box>
+              )}
+            </form>
+          )}
+        </Formik>
+
         <Button
           variant="contained"
           color="error"
@@ -107,9 +179,7 @@ const LoginPage = () => {
         </Button>
         <Dialog open={open}>
           <DialogTitle>{t("titleOTP")}</DialogTitle>
-          <DialogContent>
-            {t("descriptionOTP")}
-          </DialogContent>
+          <DialogContent>{t("descriptionOTP")}</DialogContent>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -117,7 +187,7 @@ const LoginPage = () => {
             noValidate
             autoComplete="off"
             sx={{
-              "& > :not(style)": { m: 1, width: "25ch", marginLeft:"20px" },
+              "& > :not(style)": { m: 1, width: "25ch", marginLeft: "20px" },
             }}
           >
             <TextField
@@ -133,12 +203,13 @@ const LoginPage = () => {
               type="submit"
               sx={{ fontSize: "11px" }}
               endIcon={<SendIcon />}
+              onClick={handleConfirmDialog}
             >
-              {t("getOTP")}
+              {t("confirmOTP")}
             </Button>
           </Box>
         </Dialog>
-        
+
         <Box display="flex" justifyContent="center" mt="20px" gap={1}>
           <Button
             color="error"

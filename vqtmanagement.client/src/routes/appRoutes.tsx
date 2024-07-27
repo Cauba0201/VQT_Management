@@ -14,11 +14,11 @@ import HomeIcon from "@mui/icons-material/Home";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
-import PhoneIcon from "@mui/icons-material/Phone";
+// import PhoneIcon from "@mui/icons-material/Phone";
 import SupportIcon from "@mui/icons-material/Support";
 import MapIcon from "@mui/icons-material/Map";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-// import { useTranslation } from "react-i18next";
+import GroupIcon from '@mui/icons-material/Group';
 
 
 
@@ -35,6 +35,15 @@ const appRoutes: RouteType[] = [
     sidebarProps: {
       displayText: "Home",
       icon: <HomeIcon />,
+    },
+  },
+  {
+    path: "/phone-call",
+    element: <PhoneCall />,
+    state: "phonecall",
+    sidebarProps: {
+      displayText: "Account Manager",
+      icon: <GroupIcon />,
     },
   },
   {
@@ -87,15 +96,7 @@ const appRoutes: RouteType[] = [
       icon: <AppsOutlinedIcon />,
     },
   },
-  {
-    path: "/phone-call",
-    element: <PhoneCall />,
-    state: "phonecall",
-    sidebarProps: {
-      displayText: "Phone Call",
-      icon: <PhoneIcon />,
-    },
-  },
+  
   {
     path: "/contact",
     element: <Contact />,
@@ -127,20 +128,4 @@ const appRoutes: RouteType[] = [
 
 export default appRoutes;
 
-// const TranslatedRoutes = (): void => {
-//   const {t}=useTranslation()
 
-//   const translateRoutes = appRoutes.map((route)=> {
-//     if(route.sidebarProps){
-//       return {
-//         ...route,
-//         sidebarProps: {
-//           ...route.sidebarProps,
-//           displayText: t(route.sidebarProps.displayText)
-//         }
-//       };
-//     }
-//   })
-// }
-
-// export TranslatedRoutes;

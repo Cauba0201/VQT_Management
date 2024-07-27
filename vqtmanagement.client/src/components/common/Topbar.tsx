@@ -14,7 +14,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import { colorModeContext, tokens } from "../../theme";
 import sizeConfigs from "../../configs/sizeConfig";
-import colorConfigs from "../../configs/colorConfigs";
+import colorConfigs from "../../configs/colorConfigs";  
 import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {

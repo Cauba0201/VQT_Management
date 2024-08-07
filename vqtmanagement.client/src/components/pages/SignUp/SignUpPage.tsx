@@ -10,7 +10,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import backGroundLogin from "../../../assets/images/background-network.png";
 import logo_login from "../../../assets/images/VQT Managementt.png";
-import SendIcon from "@mui/icons-material/Send";
+// import SendIcon from "@mui/icons-material/Send";
 import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
@@ -82,6 +82,27 @@ const LoginPage = () => {
             ),
           }}
         />
+        <TextField
+          fullWidth
+          label="Confirm password"
+          type={showPassword ? "text" : "password"}
+          margin="normal"
+          color="error"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
         <Button
           variant="contained"
           color="error"
@@ -92,9 +113,9 @@ const LoginPage = () => {
             mb: 2,
           }}
         >
-          {t("login")}
+          Đăng kí
         </Button>
-
+{/* 
         <Box
           display="flex"
           justifyContent="space-between"
@@ -121,7 +142,7 @@ const LoginPage = () => {
           >
             {t('getOTP')}
           </Button>
-        </Box>
+        </Box> */}
         <Box display="flex" justifyContent="center" mt="20px" gap={1}>
           <Button
             color="error"

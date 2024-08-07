@@ -3,6 +3,7 @@ import { RouteType } from "./config";
 import appRoutes from "./appRoutes";
 import { Route } from "react-router-dom";
 import PageWrapper from "../components/layout/PageWrapper";
+// import LoginPage from "../components/pages/LogIn/LoginPage";
 
 const generateRoute = (routes: RouteType[]): ReactNode => {
   return routes.map((route, index) =>
@@ -11,6 +12,7 @@ const generateRoute = (routes: RouteType[]): ReactNode => {
         index
         path={route.path}
         element={<PageWrapper state={route.state}>{route.element}</PageWrapper>}
+        // element={<LoginPage />}
         key={index}
       />
     ) : (

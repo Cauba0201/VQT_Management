@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, List, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Grid, List, Typography, useTheme } from "@mui/material";
 import StatBox from "../common/StatBox";
 import { tokens } from "../../theme";
 import PersonIcon from "@mui/icons-material/Person";
@@ -6,10 +6,9 @@ import LineChart from "../common/chart-data/LineChart";
 import BarChart from "../common/chart-data/BarChart";
 import PieChart from "../common/chart-data/PieChart";
 import NewItems from "../common/NewItems";
-import { newItems, orderTimelineItems } from "../../data/mockData";
-import OrderTimeLineItem from "../common/OrderTimeLineItem";
-
-// import NoContent from "./NoContentPage/NoContent";
+import { newItems } from "../../data/mockData";
+import GeographyChart from "../common/chart-data/MapView";
+import MyResponsiveStream from "../common/chart-data/monoLineChart";
 
 const HomeMain = () => {
   const theme = useTheme();
@@ -22,12 +21,15 @@ const HomeMain = () => {
         gridAutoRows="130px"
         gap="20px"
       >
-        <Box
+        <Grid
           gridColumn="span 3"
           bgcolor={colors.white[100]}
           display="flex"
           justifyContent="center"
           alignItems="center"
+          xs={12}
+          md={8}
+          borderRadius="10px"
         >
           <StatBox
             icon={
@@ -35,16 +37,20 @@ const HomeMain = () => {
             }
             title="21,202"
             subtitle="Latency"
-            increase="+12%"
+            increase="0%"
             subtitleb="From last week"
+            color="#203461"
           />
-        </Box>
-        <Box
+        </Grid>
+        <Grid
           gridColumn="span 3"
           bgcolor={colors.white[100]}
           display="flex"
           justifyContent="center"
           alignItems="center"
+          xs={12}
+          md={8}
+          borderRadius="10px"
         >
           <StatBox
             icon={
@@ -54,6 +60,48 @@ const HomeMain = () => {
             subtitle="Avagret"
             increase="+12%"
             subtitleb="From last week"
+            color={colors.greenAccent[500]}
+
+          />
+        </Grid>
+        <Grid
+          gridColumn="span 3"
+          bgcolor={colors.white[100]}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          borderRadius="10px"
+        >
+          <StatBox
+            icon={
+              <PersonIcon sx={{ color: colors.grey[600], fontSize: "20px" }} />
+            }
+            title="12,567"
+            subtitle="HPG"
+            increase="-12%"
+            subtitleb="From last week"
+            color="#d9534f"
+
+          />
+        </Grid>
+        <Box
+          gridColumn="span 3"
+          bgcolor={colors.white[100]}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          borderRadius="10px"
+        >
+          <StatBox
+            icon={
+              <PersonIcon sx={{ color: colors.grey[600], fontSize: "20px" }} />
+            }
+            title="12,567"
+            subtitle="NVL"
+            increase="+12%"
+            subtitleb="From last week"
+            color={colors.greenAccent[500]}
+
           />
         </Box>
         <Box
@@ -62,15 +110,18 @@ const HomeMain = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
+          borderRadius="10px"
         >
           <StatBox
             icon={
               <PersonIcon sx={{ color: colors.grey[600], fontSize: "20px" }} />
             }
             title="12,567"
-            subtitle="Email"
-            increase="+12%"
+            subtitle="DXG"
+            increase="0%"
             subtitleb="From last week"
+            color="#203461"
+
           />
         </Box>
         <Box
@@ -79,56 +130,26 @@ const HomeMain = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
+          borderRadius="10px"
         >
           <StatBox
             icon={
               <PersonIcon sx={{ color: colors.grey[600], fontSize: "20px" }} />
             }
             title="12,567"
-            subtitle="Email"
-            increase="+12%"
+            subtitle="VLM"
+            increase="-12%"
             subtitleb="From last week"
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          bgcolor={colors.white[100]}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <StatBox
-            icon={
-              <PersonIcon sx={{ color: colors.grey[600], fontSize: "20px" }} />
-            }
-            title="12,567"
-            subtitle="Email"
-            increase="+12%"
-            subtitleb="From last week"
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          bgcolor={colors.white[100]}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <StatBox
-            icon={
-              <PersonIcon sx={{ color: colors.grey[600], fontSize: "20px" }} />
-            }
-            title="12,567"
-            subtitle="Email"
-            increase="+12%"
-            subtitleb="From last week"
+            color="#d9534f"
+
           />
         </Box>
         {/* Row 2 */}
         <Box
-          gridColumn="span 14"
+          gridColumn="span 12"
           gridRow="span 2"
           bgcolor={colors.white[100]}
+          borderRadius="10px"
         >
           <Box
             mt="25px"
@@ -141,18 +162,18 @@ const HomeMain = () => {
               <Box display="flex" gap="10px">
                 <Typography
                   variant="h5"
-                  fontWeight="550"
+                  fontWeight="600"
                   color={colors.grey[400]}
                 >
                   Line Chart
                 </Typography>
-                <Typography
+                {/* <Typography
                   variant="h5"
                   fontWeight="550"
                   color={colors.grey[600]}
                 >
                   subtitle
-                </Typography>
+                </Typography> */}
               </Box>
               <Box></Box>
             </Box>
@@ -162,21 +183,23 @@ const HomeMain = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           bgcolor={colors.white[100]}
-          overflow="auto"
+          p="30px"
+          borderRadius="10px"
         >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
-            color={colors.grey[100]}
-            p="12px"
-          >
-            <Typography variant="h5">Recent </Typography>
-            {/* <Typography>$59,000</Typography> */}
+          <Box display="flex" gap={1}>
+            <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
+              Pie Chart
+            </Typography>
+            {/* <Typography variant="h5" fontWeight="500">
+              Campaign
+            </Typography> */}
+          </Box>
+
+          <Box height="250px" m="-20px 0 0 0">
+            <PieChart />
           </Box>
         </Box>
         {/* Row 3 */}
@@ -185,14 +208,15 @@ const HomeMain = () => {
           gridRow="span 2"
           bgcolor={colors.white[100]}
           p="30px"
+          borderRadius="10px"
         >
           <Box display="flex" gap={1}>
-            <Typography variant="h5" fontWeight="500">
+            <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
               Bar Chart
             </Typography>
-            <Typography variant="h5" fontWeight="500">
+            {/* <Typography variant="h5" fontWeight="500">
               Campaign
-            </Typography>
+            </Typography> */}
           </Box>
 
           <Box height="250px" m="-20px 0 0 0">
@@ -204,14 +228,17 @@ const HomeMain = () => {
           gridRow="span 2"
           bgcolor={colors.white[100]}
           p="30px"
+          borderRadius="10px"
         >
           <Box display="flex" gap={1}>
-            <Typography variant="h5" fontWeight="500">
+            <Typography variant="h5"
+                  fontWeight="600"
+                  color={colors.grey[400]}>
               Pie Chart
             </Typography>
-            <Typography variant="h5" fontWeight="500">
+            {/* <Typography variant="h5" fontWeight="500">
               Campaign
-            </Typography>
+            </Typography> */}
           </Box>
 
           <Box height="250px" m="-20px 0 0 0">
@@ -219,116 +246,89 @@ const HomeMain = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
-          gridRow="span 2"
+          gridColumn="span 9"
+          gridRow="span 4"
           bgcolor={colors.white[100]}
-          p="30px"
+          borderRadius="10px"
         >
-          <Box display="flex" gap={1}>
-            <Typography variant="h5" fontWeight="500">
-              Pie Chart
-            </Typography>
-            <Typography variant="h5" fontWeight="500">
-              Campaign
-            </Typography>
-          </Box>
+          <Box
+            display="flex"
+            gridTemplateColumns="repeat(10, 1fr)"
+            gridAutoRows="130px"
+            gap="20px"
+          >
+            <Grid item xs={12} md={8}>
+              <Typography
+                variant="h5"
+                component="div"
+                m="20px"
+                ml="30px"
+                gutterBottom
+                fontWeight="600"
+                  color={colors.grey[400]}
+              >
+                News
+              </Typography>
 
-          <Box height="250px" m="-20px 0 0 0">
-            <PieChart />
-          </Box>
-        </Box>
-        <Box
-          gridColumn="span 5"
-          gridRow="span 2"
-          bgcolor={colors.white[100]}
-          p="30px"
-        >
-          <Box display="flex" gap={1}>
-            <Typography variant="h5" fontWeight="500">
-              Bar Chart
-            </Typography>
-            <Typography variant="h5" fontWeight="500">
-              Campaign
-            </Typography>
-          </Box>
-
-          <Box height="250px" m="-20px 0 0 0">
-            <BarChart />
+              <List>
+                {newItems.map((item, index) => (
+                  <NewItems
+                    key={index}
+                    title={item.title}
+                    description={item.description}
+                    time={item.time}
+                    avatar={item.avatar}
+                  />
+                ))}
+              </List>
+            </Grid>
           </Box>
         </Box>
         {/* Row 4 */}
         <Box
-          gridColumn="span 10"
-          gridRow="span 4"
-          bgcolor={colors.white[100]}
+          sx={{
+            gridColumn: "span 9",
+            gridRow: "span 2",
+            backgroundColor: colors.white[100],
+            padding: "30px",
+          }}
+          borderRadius="10px"
         >
-          <Box
-            display="flex"
-            gridTemplateColumns="repeat(10, 1fr)"
-            gridAutoRows="130px"
-            gap="20px"
-          >
-            <Grid item xs={12} md={8}>
-              <Paper elevation={3} sx={{ marginLeft: "20px", width: "790px" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  m="20px"
-                  ml="30px"
-                  gutterBottom
-                  fontWeight="bold"
-                >
-                  News
-                </Typography>
-                <Divider/>
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ marginBottom: "15px" }}
+            color={colors.grey[400]}
 
-                <List>
-                  {newItems.map((item, index) => (
-                    <NewItems
-                      key={index}
-                      title={item.title}
-                      description={item.description}
-                      time={item.time}
-                      avatar={item.avatar}
-                    />
-                  ))}
-                </List>
-              </Paper>
-            </Grid>
+            
+          >
+            Geography Based Traffic
+          </Typography>
+          <Box height="200px">
+            <GeographyChart isDashboard={true} />
           </Box>
         </Box>
-        <Box gridColumn="span 8" gridRow="span 4" bgcolor={colors.white[100]}>
-          <Box
-            display="flex"
-            gridTemplateColumns="repeat(10, 1fr)"
-            gridAutoRows="130px"
-            gap="20px"
+        <Box
+          sx={{
+            gridColumn: "span 18",
+            gridRow: "span 3",
+            backgroundColor: colors.white[100],
+            padding: "30px",
+          }}
+          borderRadius="10px"
+        >
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ marginBottom: "15px" }}
+            color={colors.grey[400]}
+
+            
           >
-            <Grid item xs={12} md={8}>
-              <Paper elevation={3} sx={{ marginLeft: "20px", width: "620px" }}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  m="20px"
-                  ml="30px"
-                  gutterBottom
-                  fontWeight="bold"
-                >
-                  Order Timeline
-                </Typography>
-                <Divider/>
-                <List>
-                  {orderTimelineItems.map((item, index) => (
-                    <OrderTimeLineItem
-                      key={index}
-                      status={item.status}
-                      time={item.time}
-                      color={item.color}
-                    />
-                  ))}
-                </List>
-              </Paper>
-            </Grid>
+            Geography Based Traffic
+          </Typography>
+          <Box height="200px">
+            <MyResponsiveStream  />
           </Box>
         </Box>
       </Box>

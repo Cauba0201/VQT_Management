@@ -423,23 +423,19 @@ export const mockPieData = [
     color: "hsl(291, 70%, 50%)",
   },
   {
-    id: "lisp",
+    id: "lisp", 
     label: "lisp",
     value: 503,
     color: "hsl(229, 70%, 50%)",
+
   },
-  {
-    id: "scala",
-    label: "scala",
-    value: 584,
-    color: "hsl(344, 70%, 50%)",
-  },
+  
 ];
 
 export const mockLineData = [
   {
     id: "japan",
-    color: tokens("dark").greenAccent[500],
+    color: "#203461",
     data: [
       {
         x: "plane",
@@ -493,7 +489,7 @@ export const mockLineData = [
   },
   {
     id: "france",
-    color: tokens("dark").blueAccent[300],
+    color: "#d95753",
     data: [
       {
         x: "plane",
@@ -547,7 +543,7 @@ export const mockLineData = [
   },
   {
     id: "us",
-    color: tokens("dark").redAccent[200],
+    color: "#ec407a",
     data: [
       {
         x: "plane",
@@ -1354,3 +1350,78 @@ export const orderTimelineItems = [
     color: "red",
   },
 ];
+
+export const MonoLineChart = [
+  {
+    "Raoul": 140,
+    "Josiane": 200,
+    "Marcel": 173,
+    "René": 62,
+    "Paul": 14,
+    "Jacques": 67
+  },
+  {
+    "Raoul": 55,
+    "Josiane": 155,
+    "Marcel": 66,
+    "René": 50,
+    "Paul": 52,
+    "Jacques": 76
+  },
+  {
+    "Raoul": 78,
+    "Josiane": 117,
+    "Marcel": 90,
+    "René": 148,
+    "Paul": 37,
+    "Jacques": 46
+  },
+  {
+    "Raoul": 16,
+    "Josiane": 142,
+    "Marcel": 102,
+    "René": 158,
+    "Paul": 173,
+    "Jacques": 90
+  },
+  {
+    "Raoul": 55,
+    "Josiane": 12,
+    "Marcel": 23,
+    "René": 198,
+    "Paul": 80,
+    "Jacques": 175
+  },
+  {
+    "Raoul": 138,
+    "Josiane": 68,
+    "Marcel": 77,
+    "René": 64,
+    "Paul": 77,
+    "Jacques": 79
+  },
+  {
+    "Raoul": 164,
+    "Josiane": 49,
+    "Marcel": 51,
+    "René": 84,
+    "Paul": 155,
+    "Jacques": 28
+  },
+  {
+    "Raoul": 68,
+    "Josiane": 200,
+    "Marcel": 189,
+    "René": 163,
+    "Paul": 69,
+    "Jacques": 90
+  },
+  {
+    "Raoul": 173,
+    "Josiane": 79,
+    "Marcel": 71,
+    "René": 125,
+    "Paul": 194,
+    "Jacques": 117
+  }
+]

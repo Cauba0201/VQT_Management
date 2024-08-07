@@ -1,11 +1,9 @@
 import { RouteType } from "./config";
 import HomeMain from "../components/pages/HomeMain";
-import DataTraffic from "../components/pages/Data Traffic/DataTraffic";
 import PageLayoutChildrens from "../components/pages/Signal/PageLayoutChildren";
 import AnalyticsPage from "../components/pages/Signal/AnalyticsPage";
 import SignalAndQualityPage from "../components/pages/Signal/SignalAndQualityPage";
 import Latency from "../components/pages/Latency/Latency";
-import PhoneCall from "../components/pages/PhoneCall/PhoneCall";
 import Contact from "../components/pages/Contact/Contact";
 import MapView from "../components/pages/MapView/MapView";
 import Support from "../components/pages/Support/Support";
@@ -18,9 +16,9 @@ import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 import SupportIcon from "@mui/icons-material/Support";
 import MapIcon from "@mui/icons-material/Map";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import GroupIcon from '@mui/icons-material/Group';
-
-
+import GroupIcon from "@mui/icons-material/Group";
+import AccountManager from "../components/pages/PhoneCall/AccountManagement";
+import TestPage from "../components/pages/TestPage/TestPage";
 
 const appRoutes: RouteType[] = [
   {
@@ -38,20 +36,20 @@ const appRoutes: RouteType[] = [
     },
   },
   {
-    path: "/phone-call",
-    element: <PhoneCall />,
-    state: "phonecall",
+    path: "/account-manager",
+    element: <AccountManager />,
+    state: "accountmanager",
     sidebarProps: {
       displayText: "Account Manager",
       icon: <GroupIcon />,
     },
   },
   {
-    path: "/data-traffic",
-    element: <DataTraffic />,
-    state: "datatraffic",
+    path: "/test",
+    element: <TestPage />,
+    state: "test",
     sidebarProps: {
-      displayText: "Data Traffic",
+      displayText: "Test",
       icon: <ArticleOutlinedIcon />,
     },
   },
@@ -96,7 +94,7 @@ const appRoutes: RouteType[] = [
       icon: <AppsOutlinedIcon />,
     },
   },
-  
+
   {
     path: "/contact",
     element: <Contact />,
@@ -127,5 +125,3 @@ const appRoutes: RouteType[] = [
 ];
 
 export default appRoutes;
-
-

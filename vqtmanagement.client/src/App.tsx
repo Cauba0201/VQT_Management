@@ -9,10 +9,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" index element={<LoginPage />} />
         <Route path="/" element={<MainLayout />}>
           {routes}
         </Route>
-        <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>

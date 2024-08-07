@@ -1,12 +1,9 @@
-// import PropTypes from "prop-types";
-
 import {
   Drawer,
   Avatar,
   List,
   Stack,
   Toolbar,
-  IconButton,
   // useTheme,
   // Box,
   // MenuList,
@@ -17,26 +14,20 @@ import appRoutes from "../../routes/appRoutes";
 import SidebaritemCollapse from "./SidebaritemCollapse";
 import SidebarItem from "./SidebarItem";
 import logo_viettel from "../../assets/images/logo_no_bg.png";
-// import { useState } from "react";
+import { useState } from "react";
 
-// import { drawerWidth } from "../../store/constant";
-// import { BrowserView, MobileView } from "react-device-detect";
-// import PerfectScrollbar from "react-perfect-scrollbar";
-// import Chip from "../../../utils/Chip";
-// import useMediaQuery from "@mui/material/useMediaQuery";
 
-// interface SidebarProps {
-//   drawerOpen: boolean;
-//   drawerToggle: () => void;
-//   window?: () => Window;
-// }
 
-// { drawerOpen, drawerToggle, window }: SidebarProps
 
 const Sidebar = () => {
-  // const [isCollapsed, setIsCollapsed] = useState(false);
   // const theme = useTheme();
   // const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const handleShowSidebar = (): void => {
+    setIsCollapsed(isCollapsed)
+  }
+
 
   // const drawer = (
   //   <>
@@ -87,11 +78,9 @@ const Sidebar = () => {
 
   return (
     <div>
-      (
       <Drawer
         variant="permanent"
         sx={{
-          // width: "300px",
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: "300px",
@@ -102,24 +91,19 @@ const Sidebar = () => {
           },
         }}
       >
-        <List disablePadding>
-          <Toolbar sx={{ marginBottom: "20px" }}>
+        {!isCollapsed && (<List disablePadding>
+          <Toolbar >
             <Stack
               sx={{ width: "100%" }}
               direction="row"
               justifyContent="center"
+              
             >
               <Avatar
                 sx={{ width: "80%", height: "100%" }}
                 variant="square"
                 src={logo_viettel}
               />
-              <IconButton
-                sx={{ paddingY: "50px" }}
-                // onClick={() => setIsCollapsed(!isCollapsed)}
-              >
-                {/* <MenuOutlinedIcon /> */}
-              </IconButton>
             </Stack>
           </Toolbar>
           {appRoutes.map((route, index) =>
@@ -131,9 +115,9 @@ const Sidebar = () => {
               )
             ) : null
           )}
-        </List>
+        </List>)}
+        
       </Drawer>
-      )
     </div>
     // <Box
     //   component="nav"

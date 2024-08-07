@@ -1,15 +1,19 @@
-import { Box, Toolbar } from "@mui/material";
+import { Box } from "@mui/material";
 import Topbar from "../common/Topbar";
 import Sidebar from "../common/Sidebar";
 import colorConfigs from "../../configs/colorConfigs";
-// import NoContent from "../pages/NoContentPage/NoContent";
 import { Outlet } from "react-router-dom";
+// import useMediaQuery from "@mui/material/useMediaQuery";
+
+
+9
 
 const MainLayout = () => {
+  // const theme= useTheme()
+  // const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
   return (
-    <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex" }}>
       <Topbar />
-      <Sidebar />
       <Box
         component="main"
         sx={{
@@ -19,14 +23,14 @@ const MainLayout = () => {
           width: "100%",
           bgcolor: colorConfigs.mainBg,
           marginLeft: "300px",
-          
+          marginTop: "60px",
         }}
       >
-        <Toolbar />
+        <Sidebar />
         <Outlet />
-        {/* <NoContent /> */}
       </Box>
     </Box>
+    
   );
 };
 

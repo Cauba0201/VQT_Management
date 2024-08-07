@@ -4,6 +4,7 @@ import { Formik } from "formik";
 const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleFormsubmit = (values: any) => {
     console.log(values);
   };

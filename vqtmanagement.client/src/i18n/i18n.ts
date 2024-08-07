@@ -13,7 +13,7 @@ const resources = {
       inputOTP: "Input OTP",
       home: "Home",
       titleOTP: "Authenticate account with OTP code",
-      descriptionOTP: "The OTP code will be sent to your phone number, please check your email your device!"
+      descriptionOTP: "OTP code has been sent to your email, please check email!"
     },
     // home: {
     //   HOME_EN,
@@ -28,7 +28,7 @@ const resources = {
       inputOTP: "Nhập OTP",
       home: "Trang chủ",
       titleOTP: "Xác thực tài khoản bằng mã OTP",
-      descriptionOTP: "Mã OTP sẽ được gửi về số điện thoại của bạn, vui lòng kiểm tra email thiết bị của bạn!"
+      descriptionOTP: "Mã OTP đã được gửi về email của bạn, vui lòng kiểm tra email của bạn!"
 
     },
     // home: HOME_VI,

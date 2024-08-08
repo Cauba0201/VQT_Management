@@ -25,7 +25,6 @@ const TestControl = () => {
           <Box display="flex" justifyContent="space-between">
             <Typography sx={{ fontWeight: "bold" }}>Lịch trình</Typography>
           </Box>
-
           <Box display="flex" gap={2}>
             <Box>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -34,7 +33,6 @@ const TestControl = () => {
                 </DemoContainer>
               </LocalizationProvider>
             </Box>
-
             <Box>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["DatePicker"]}>
@@ -66,10 +64,6 @@ const TestControl = () => {
             </Box>
           </Box>
         </Box>
-        <Box>
-          <Typography>|</Typography>
-        </Box>
-
         <Box
           display="flex"
           justifyContent="space-between"
@@ -78,7 +72,6 @@ const TestControl = () => {
           <Box>
             <FormGroup>
               <FormControlLabel control={<Checkbox />} label="Đặt lịch test" />
-
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
                 label="Quay phiên PPPoE"
@@ -87,7 +80,7 @@ const TestControl = () => {
             </FormGroup>
           </Box>
           <Box>
-            <Typography variant="h6" sx={{ fontWeight: " bold" }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
               UserName:
             </Typography>
             <Typography sx={{ justifyContent: "center" }}>Nguyen An</Typography>

@@ -1,12 +1,11 @@
-import { Outlet } from "react-router-dom"
-
+import { Outlet } from "react-router-dom";
 
 const PageLayoutChildrens = () => {
-    return (
-        <>
-            <Outlet/>
-        </>
-    )
-}
+  return (
+    <>
+      <Outlet />
+    </>
+  );
+};
 
 export default PageLayoutChildrens;

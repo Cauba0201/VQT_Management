@@ -6,6 +6,7 @@ import {
   IconButton,
   InputBase,
   Typography,
+  Avatar,
 } from "@mui/material";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -17,18 +18,18 @@ import sizeConfigs from "../../configs/sizeConfig";
 import colorConfigs from "../../configs/colorConfigs";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
+import { VisibilityContext } from "../layout/MainLayout";
 
-
-const Topbar = () => {
+const Topbar: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorsMode = useContext(colorModeContext);
+  const { handleShowSidebar } = useContext(VisibilityContext);
 
   const navigate = useNavigate();
   const handleNavigateLogin = () => {
     navigate("/login");
   };
-
 
   return (
     <AppBar
@@ -52,7 +53,7 @@ const Topbar = () => {
           </Box> */}
 
           <Box display="flex" borderRadius="3px">
-            <IconButton type="button" sx={{ p: 1 }} >
+            <IconButton type="button" sx={{ p: 1 }} onClick={handleShowSidebar}>
               <MenuIcon />
             </IconButton>
             <Box bgcolor={colors.primary[400]}>

@@ -52,7 +52,12 @@ const DialogOptionServerButton = ({
       >
         <Typography
           gutterBottom
-          sx={{ fontWeight: "bold", ml: "35%", justifyContent: "center" }}
+          sx={{
+            fontWeight: "bold",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+          variant="h5"
         >
           {tableD1}
         </Typography>
@@ -74,11 +79,17 @@ const DialogOptionServerButton = ({
           justifyContent: "center",
           alignItems: "center",
           p: "3px",
+          marginTop: "30px",
         }}
       >
         <Typography
           gutterBottom
-          sx={{ fontWeight: "bold", ml: "35%", justifyContent: "center" }}
+          sx={{
+            fontWeight: "bold",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+          variant="h5"
         >
           {tableD2}
         </Typography>
@@ -95,7 +106,7 @@ const DialogOptionServerButton = ({
           </FormGroup>
         </DialogContent>
       </Box>
-      <DialogActions >
+      <DialogActions>
         <Box>
           <Button
             autoFocus

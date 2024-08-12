@@ -1,6 +1,9 @@
 import {
   Box,
   Card,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
   Table,
   TableCell,
   TableHead,
@@ -10,15 +13,17 @@ import {
 } from "@mui/material";
 import { Android12Switch } from "../../../utils/customs/Switch";
 import { useState } from "react";
-import { currencies, cities } from "../../data/index";
+import { currencies, timess } from "../../data/index";
 import BootstrapButton from "../../../utils/customs/ButtonLower";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DialogOptionServerButton from "../../../utils/customs/DialogOptionServerButton";
 import FrameTestBottom from "./FrameTestBottom";
+import FullFeaturedCrudGrid from "../../../utils/customs/GridOptions";
+import GridOptionsVideo from "../../../utils/customs/GridOptionsVideo";
+import GridOptionsPing from "../../../utils/customs/GridOptionsPing";
 
 const TestBottom = () => {
   const [success, setSuccess] = useState(false);
-  // const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState("none");
 
@@ -36,7 +41,7 @@ const TestBottom = () => {
   };
 
   return (
-    <Card sx={{ borderRadius: "10px" }}>
+    <Card sx={{ borderRadius: "20px" }}>
       <Box sx={{ overflowX: "auto" }}>
         <Table sx={{ minWidth: "800px" }}>
           <FrameTestBottom
@@ -48,7 +53,9 @@ const TestBottom = () => {
             option="Tùy chỉnh"
             note="Note: Enter full with URL : “http://...” or “https://..."
             tableD="Loading Website Advanced Config "
-          />
+          >
+            <FullFeaturedCrudGrid />
+          </FrameTestBottom>
           <FrameTestBottom
             title="Bài đo Website"
             name="Video Streaming"
@@ -58,7 +65,9 @@ const TestBottom = () => {
             option="Tùy chỉnh"
             tableD="Video Streaming"
             note="Enter full with URL : “http://...” or “https://... Video MUST NOT contain Ads"
-          />
+          >
+            <GridOptionsVideo />
+          </FrameTestBottom>
           <TableHead>
             <TableRow>
               <TableCell>
@@ -76,6 +85,7 @@ const TestBottom = () => {
                 <TextField
                   id="outlined-number"
                   type="number"
+                  defaultValue={3000}
                   placeholder="3000"
                   size="small"
                   InputLabelProps={{
@@ -162,13 +172,13 @@ const TestBottom = () => {
                 <TextField
                   id="outlined-select-currency-native"
                   select
-                  defaultValue="none"
+                  defaultValue="10"
                   size="small"
                   SelectProps={{
                     native: true,
                   }}
                 >
-                  {cities.map((option) => (
+                  {timess.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
@@ -191,7 +201,64 @@ const TestBottom = () => {
             option="Tùy chỉnh"
             note="IP address must not be duplicated across rows"
             tableD="Cấu hình Ping chi tiết"
-          />
+          >
+            <GridOptionsPing />
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Detail Ping Log"
+              />
+            </FormGroup>
+            <Box sx={{ flexDirection: "column" }}>
+              <Box
+                sx={{
+                  marginBottom: "5px",
+                  display: "flex",
+                  gap: "5px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Packet Size:
+                </Typography>
+                <TextField
+                  id="outlined-number"
+                  type="number"
+                  defaultValue={32}
+                  placeholder="Bytes"
+                  size="small"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <Typography>Bytes</Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: "5px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Request Time Out:
+                </Typography>
+                <TextField
+                  id="outlined-number"
+                  type="number"
+                  defaultValue={3000}
+                  placeholder="Miliseconds"
+                  size="small"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <Typography>Miliseconds</Typography>
+              </Box>
+            </Box>
+          </FrameTestBottom>
         </Table>
       </Box>
     </Card>

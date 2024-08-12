@@ -1,10 +1,14 @@
-import { Box } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 const AnalyticsPage = () => {
   return (
-    <Box m="0px 20px" >
-      Analyst Page
-    </Box>
+    <Stack sx={{ marginTop: "20px" }}>
+      <Box>
+        <Typography sx={{ textAlign: "center", justifyContent: "center" }}>
+          Coming soon...
+        </Typography>
+      </Box>
+    </Stack>
   );
 };
 

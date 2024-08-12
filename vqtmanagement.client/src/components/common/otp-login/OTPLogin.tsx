@@ -4,9 +4,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  TextField,
 } from "@mui/material";
-import React, { useState } from "react";
 import OtpInput from "react-otp-input"
 
 type OtpProps = {

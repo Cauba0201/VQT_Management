@@ -7,7 +7,6 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import FullFeaturedCrudGrid from "../../utils/customs/GridOptions";
 import { BootstrapDialog } from "../../utils/customs/Dialog";
 import CancelIcon from "@mui/icons-material/Cancel";
 
@@ -16,6 +15,8 @@ type DialogOptionButtonProps = {
   note: string;
   open: boolean;
   onClose: () => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: any;
 };
 
 const DialogOptionButton = ({
@@ -23,6 +24,7 @@ const DialogOptionButton = ({
   open,
   onClose,
   note,
+  children,
 }: DialogOptionButtonProps) => {
   return (
     <BootstrapDialog aria-labelledby="customized-dialog-title" open={open}>
@@ -50,14 +52,17 @@ const DialogOptionButton = ({
       >
         <Typography
           gutterBottom
-          sx={{ fontWeight: "bold", ml: "35%", justifyContent: "center" }}
+          sx={{
+            fontWeight: "bold",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+          variant="h5"
         >
           {tableD}
         </Typography>
       </Box>
-      <DialogContent dividers>
-        <FullFeaturedCrudGrid />
-      </DialogContent>
+      <DialogContent dividers>{children}</DialogContent>
       <DialogActions sx={{ justifyContent: "space-between" }}>
         <Box display="flex">
           <Typography sx={{ fontWeight: "bold", marginRight: "2px" }}>

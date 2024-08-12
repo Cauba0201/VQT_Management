@@ -12,13 +12,14 @@ import HomeIcon from "@mui/icons-material/Home";
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
-// import PhoneIcon from "@mui/icons-material/Phone";
 import SupportIcon from "@mui/icons-material/Support";
 import MapIcon from "@mui/icons-material/Map";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import GroupIcon from "@mui/icons-material/Group";
-import AccountManager from "../components/pages/PhoneCall/AccountManagement";
+import AccountManager from "../components/pages/AccountManager/AccountManagement";
 import TestPage from "../components/pages/TestPage/TestPage";
+import BarChartIcon from '@mui/icons-material/BarChart';
+import HighQualityIcon from '@mui/icons-material/HighQuality';
 
 const appRoutes: RouteType[] = [
   {
@@ -73,6 +74,7 @@ const appRoutes: RouteType[] = [
         state: "signal.signalandquality",
         sidebarProps: {
           displayText: "Signal And Quality",
+          icon: <HighQualityIcon/>
         },
       },
       {
@@ -81,6 +83,7 @@ const appRoutes: RouteType[] = [
         state: "signal.analyst",
         sidebarProps: {
           displayText: "Analyst",
+          icon: <BarChartIcon/>
         },
       },
     ],

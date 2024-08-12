@@ -1,24 +1,17 @@
 import {
   Box,
-  // Button,
-  // DialogActions,
-  // DialogContent,
-  // DialogTitle,
-  // IconButton,
   TableCell,
   TableHead,
   TableRow,
   TextField,
   Typography,
 } from "@mui/material";
-// import { BootstrapDialog } from "../../../utils/customs/Dialog";
-// import FullFeaturedCrudGrid from "../../../utils/customs/GridOptions";
 import { Android12Switch } from "../../../utils/customs/Switch";
 import BootstrapButton from "../../../utils/customs/ButtonLower";
 // import CancelIcon from "@mui/icons-material/Cancel";
 import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
 import { useState } from "react";
-import { currencies, cities } from "../../data/index";
+import { currencies, timess } from "../../data/index";
 import DialogOptionButton from "../../../utils/customs/DialogOptionButton";
 
 type FrameTestBottomProps = {
@@ -30,6 +23,8 @@ type FrameTestBottomProps = {
   time: string;
   note: string;
   tableD: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: any;
 };
 
 const FrameTestBottom = ({
@@ -41,6 +36,7 @@ const FrameTestBottom = ({
   time,
   note,
   tableD,
+  children,
 }: FrameTestBottomProps) => {
   const [success, setSuccess] = useState(false);
   const [open, setOpen] = useState(false);
@@ -52,9 +48,7 @@ const FrameTestBottom = ({
   const handleClickOpen = () => {
     setOpen(true);
   };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+
   const handleSelectChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
   };
@@ -63,7 +57,9 @@ const FrameTestBottom = ({
     <TableHead>
       <TableRow>
         <TableCell>
-          <Typography sx={{ fontWeight: "500" }}>{title}</Typography>
+          <Typography sx={{ fontWeight: "500" }}>
+            {title}
+          </Typography>
           {name}
           <Android12Switch
             color="primary"
@@ -77,6 +73,7 @@ const FrameTestBottom = ({
           <TextField
             id="outlined-number"
             type="number"
+            defaultValue={3000}
             placeholder="3000"
             size="small"
             InputLabelProps={{
@@ -119,7 +116,9 @@ const FrameTestBottom = ({
               onClose={() => setOpen(false)}
               tableD={tableD}
               note={note}
-            />
+            >
+              {children}
+            </DialogOptionButton>
           </Box>
         </TableCell>
         <TableCell>
@@ -127,13 +126,13 @@ const FrameTestBottom = ({
           <TextField
             id="outlined-select-currency-native"
             select
-            defaultValue="none"
+            defaultValue="10"
             size="small"
             SelectProps={{
               native: true,
             }}
           >
-            {cities.map((option) => (
+            {timess.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>

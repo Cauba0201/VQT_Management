@@ -33,7 +33,7 @@ const TestPage = () => {
 
   return (
     <Stack spacing={2} sx={{ marginTop: "20px" }}>
-      <Box sx={{ bgcolor: "#d9d9d9", borderRadius: "10px", padding: "20px" }}>
+      <Box sx={{ bgcolor: "#d9d9d9", borderRadius: "20px", padding: "20px" }}>
         <Box display="flex" justifyContent="space-between">
           <Box>
             <Typography variant="h5">Test</Typography>
@@ -50,7 +50,7 @@ const TestPage = () => {
             </BootstrapButton>
           </Box>
         </Box>
-        <Card sx={{ borderRadius: "10px" }}>
+        <Card sx={{ borderRadius: "20px" }}>
           <Box sx={{ overflowX: "auto" }}>
             <Table sx={{ minWidth: "800px" }}>
               <TableHead>
@@ -80,7 +80,7 @@ const TestPage = () => {
           </Box>
         </Card>
       </Box>
-      <Box sx={{ bgcolor: "#d9d9d9", borderRadius: "10px", padding: "20px" }}>
+      <Box sx={{ bgcolor: "#d9d9d9", borderRadius: "20px", padding: "20px" }}>
         <TestBottom />
       </Box>
       <Box

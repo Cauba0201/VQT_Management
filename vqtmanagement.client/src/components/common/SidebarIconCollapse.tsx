@@ -6,8 +6,6 @@ import {
   List,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
-  Typography,
 } from "@mui/material";
 import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
@@ -19,7 +17,7 @@ type Props = {
   item: RouteType;
 };
 
-const SidebaritemCollapse = ({ item }: Props) => {
+const SidebarIconCollapse = ({ item }: Props) => {
   const [open, setOpen] = useState(false);
   const { appState } = useSelector((state: RootState) => state.appState);
 
@@ -43,10 +41,7 @@ const SidebaritemCollapse = ({ item }: Props) => {
         <ListItemIcon color={colorConfigs.sidebar.color}>
           {item.sidebarProps.icon}
         </ListItemIcon>
-        <ListItemText
-          disableTypography
-          primary={<Typography>{item.sidebarProps.displayText}</Typography>}
-        />
+      
         {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}
       </ListItemButton>
       <Collapse in={open} timeout="auto">
@@ -54,7 +49,7 @@ const SidebaritemCollapse = ({ item }: Props) => {
           {item.child?.map((route, index) =>
             route.sidebarProps ? (
               route.child ? (
-                <SidebaritemCollapse item={route} key={index} />
+                <SidebarIconCollapse item={route} key={index} />
               ) : (
                 <SidebarItem item={route} key={index} />
               )
@@ -66,4 +61,4 @@ const SidebaritemCollapse = ({ item }: Props) => {
   ) : null;
 };
 
-export default SidebaritemCollapse;
+export default SidebarIconCollapse;

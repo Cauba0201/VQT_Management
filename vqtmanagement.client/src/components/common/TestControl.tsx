@@ -21,53 +21,71 @@ const TestControl = () => {
   return (
     <Card sx={{ borderRadius: "20px", bgcolor: "#d9d9d9" }}>
       <Box display="flex" sx={{ overflowX: "auto" }}>
-        <Box sx={{ padding: "20px", alignItems: "center", width: "50%" }}>
-          <Box display="flex" justifyContent="space-between">
-            <Typography sx={{ fontWeight: "bold" }}>Lịch trình</Typography>
-          </Box>
-          <Box display="flex" gap={2}>
-            <Box>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["DatePicker"]}>
-                  <DatePicker sx={{ bgcolor: "#ffffff" }} />
-                </DemoContainer>
-              </LocalizationProvider>
+        <Box
+          sx={{
+            padding: "10px",
+            alignItems: "center",
+            width: "40%",
+            margin: "10px",
+            bgcolor: "#ffffff",
+            borderRadius: "20px",
+          }}
+        >
+          <Box sx={{ margin: "10px", bgcolor: "#ffffff" }}>
+            <Box display="flex" justifyContent="space-between">
+              <Typography sx={{ fontWeight: "bold" }}>Lịch trình</Typography>
             </Box>
-            <Box>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["DatePicker"]}>
-                  <DatePicker sx={{ bgcolor: "#ffffff" }} />
-                </DemoContainer>
-              </LocalizationProvider>
+            <Box display="flex" gap={2}>
+              <Box>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={["DatePicker"]}>
+                    <DatePicker sx={{ bgcolor: "#ffffff" }} />
+                  </DemoContainer>
+                </LocalizationProvider>
+              </Box>
+              <Box>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={["DatePicker"]}>
+                    <DatePicker sx={{ bgcolor: "#ffffff" }} />
+                  </DemoContainer>
+                </LocalizationProvider>
+              </Box>
             </Box>
-          </Box>
-          <Box display="flex" gap={2} sx={{ marginTop: "10px" }}>
-            <Box>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoItem>
-                  <TimePicker
-                    defaultValue={todayEndOfTheDay}
-                    sx={{ bgcolor: "#ffffff" }}
-                  />
-                </DemoItem>
-              </LocalizationProvider>
-            </Box>
-            <Box>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoItem>
-                  <TimePicker
-                    defaultValue={todayEndOfTheDay}
-                    sx={{ bgcolor: "#ffffff" }}
-                  />
-                </DemoItem>
-              </LocalizationProvider>
+            <Box display="flex" gap={2} sx={{ marginTop: "10px" }}>
+              <Box>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoItem>
+                    <TimePicker
+                      defaultValue={todayEndOfTheDay}
+                      sx={{ bgcolor: "#ffffff" }}
+                    />
+                  </DemoItem>
+                </LocalizationProvider>
+              </Box>
+              <Box>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoItem>
+                    <TimePicker
+                      defaultValue={todayEndOfTheDay}
+                      sx={{ bgcolor: "#ffffff" }}
+                    />
+                  </DemoItem>
+                </LocalizationProvider>
+              </Box>
             </Box>
           </Box>
         </Box>
         <Box
           display="flex"
           justifyContent="space-between"
-          sx={{ width: "50%", alignItems: "center", padding: "20px" }}
+          sx={{
+            width: "60%",
+            alignItems: "center",
+            padding: "20px",
+            margin: "10px",
+            bgcolor: "#ffffff",
+            borderRadius: "20px",
+          }}
         >
           <Box>
             <FormGroup>
@@ -105,7 +123,7 @@ const TestControl = () => {
             <Box>
               <Button
                 sx={{
-                  bgcolor: "#ffffff",
+                  bgcolor: "#d9d9d9",
                   color: "black",
                   justifyContent: "center",
                   alignItems: "center",

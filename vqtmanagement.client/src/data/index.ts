@@ -13,7 +13,7 @@ export const currencies = [
   },
 ];
 
-export const cities = [
+export const timess = [
   { value: "none", label: "---Time---" },
   { value: "10", label: "10 ms" },
   { value: "20", label: "20 ms" },
@@ -23,4 +23,31 @@ export const cities = [
   { value: "60", label: "60 ms" },
   { value: "70", label: "70 ms" },
   { value: "80", label: "80 ms" },
+];
+
+export const cities = [
+  { value: "none", label: "---Provice---" },
+  { value: "hanoi", label: "Ha Noi" },
+  { value: "hochiminh", label: "Ho Chi Minh" },
+  { value: "namdinh", label: "Nam Dinh" },
+  { value: "thanhhoa", label: "Thanh Hoa" },
+  { value: "nghean", label: "Nghe An" },
+  { value: "ninhbinh", label: "Ninh Binh" },
+  { value: "thaibinh", label: "Thai Binh" },
+  { value: "hanam", label: "Ha Nam" },
+];
+
+export const configs = [
+  {
+    value: "auto",
+    label: "Tự động",
+  },
+  {
+    value: "options",
+    label: "User Selected Model",
+  },
+  {
+    value: "none",
+    label: "----",
+  },
 ];

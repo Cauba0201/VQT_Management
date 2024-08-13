@@ -3,8 +3,11 @@ import appRoutes from "../../routes/appRoutes";
 import colorConfigs from "../../configs/colorConfigs";
 import SidebarIconCollapse from "./SidebarIconCollapse";
 import SidebarIconItem from "./SidebarIconItem";
+import sizeConfigs from "../../configs/sizeConfig";
+// import { useState } from "react";
 
 const SidebarIcon = () => {
+  
   return (
     <div>
       <Drawer
@@ -12,7 +15,7 @@ const SidebarIcon = () => {
         sx={{
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: "70px",
+            width: sizeConfigs.sidebarHide.width,
             boxSizing: "border-box",
             borderRight: "0px",
             backgroundColor: "#d9d9d9",

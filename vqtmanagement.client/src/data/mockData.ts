@@ -1,4 +1,3 @@
-import { tokens } from "../theme";
 import av1 from "../assets/images/cover-1.png"
 import av2 from "../assets/images/cover-2.png"
 import av3 from "../assets/images/cover-3.png"

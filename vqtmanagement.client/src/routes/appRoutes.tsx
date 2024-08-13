@@ -1,8 +1,7 @@
 import { RouteType } from "./config";
 import HomeMain from "../components/pages/HomeMain";
 import PageLayoutChildrens from "../components/pages/Signal/PageLayoutChildren";
-import AnalyticsPage from "../components/pages/Signal/AnalyticsPage";
-import SignalAndQualityPage from "../components/pages/Signal/SignalAndQualityPage";
+import AnalyticsPage from "../components/pages/Signal/ColumnChart";
 import Latency from "../components/pages/Latency/Latency";
 import Contact from "../components/pages/Contact/Contact";
 import MapView from "../components/pages/MapView/MapView";
@@ -18,14 +17,19 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import GroupIcon from "@mui/icons-material/Group";
 import AccountManager from "../components/pages/AccountManager/AccountManagement";
 import TestPage from "../components/pages/TestPage/TestPage";
-import BarChartIcon from '@mui/icons-material/BarChart';
-import HighQualityIcon from '@mui/icons-material/HighQuality';
+import BarChartIcon from "@mui/icons-material/BarChart";
+import HighQualityIcon from "@mui/icons-material/HighQuality";
+// import LoginPage from "../components/pages/LogIn/LoginPage";
+import BarChartt from "../components/pages/Signal/BarChart";
+import ColumnChart from "../components/pages/Signal/ColumnChart";
+import AreaChart from "../components/pages/Signal/AreaChart";
+import PieChart from "../components/pages/Signal/PieChart";
 
 const appRoutes: RouteType[] = [
   {
     index: true,
     element: <HomeMain />,
-    state: "home",
+    state: "login",
   },
   {
     path: "/home",
@@ -55,35 +59,53 @@ const appRoutes: RouteType[] = [
     },
   },
   {
-    path: "/signal",
+    path: "/chart",
     element: <PageLayoutChildrens />,
-    state: "signal",
+    state: "chart",
     sidebarProps: {
-      displayText: "Signal",
+      displayText: "Chart",
       icon: <SignalCellularAltIcon />,
     },
     child: [
       {
         index: true,
         element: <AnalyticsPage />,
-        state: "signal.index",
+        state: "chart.index",
       },
       {
-        path: "/signal/signal-and-quality",
-        element: <SignalAndQualityPage />,
-        state: "signal.signalandquality",
+        path: "/chart/area-chart",
+        element: <AreaChart />,
+        state: "chart.areachart",
         sidebarProps: {
-          displayText: "Signal And Quality",
-          icon: <HighQualityIcon/>
+          displayText: "Area Chart",
+          icon: <HighQualityIcon />,
         },
       },
       {
-        path: "/signal/analyst",
-        element: <AnalyticsPage />,
-        state: "signal.analyst",
+        path: "/chart/columnchart",
+        element: <ColumnChart />,
+        state: "chart.columnchart",
         sidebarProps: {
-          displayText: "Analyst",
-          icon: <BarChartIcon/>
+          displayText: "Column Chart",
+          icon: <BarChartIcon />,
+        },
+      },
+      {
+        path: "/chart/barchart",
+        element: <BarChartt />,
+        state: "chart.barchart",
+        sidebarProps: {
+          displayText: "Bar Chart",
+          icon: <BarChartIcon />,
+        },
+      },
+      {
+        path: "/chart/piechart",
+        element: <PieChart />,
+        state: "chart.piechart",
+        sidebarProps: {
+          displayText: "Pie Chart",
+          icon: <BarChartIcon />,
         },
       },
     ],

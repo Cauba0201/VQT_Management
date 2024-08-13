@@ -61,7 +61,6 @@ const HomeMain = () => {
             increase="+12%"
             subtitleb="From last week"
             color={colors.greenAccent[500]}
-
           />
         </Grid>
         <Grid
@@ -81,7 +80,6 @@ const HomeMain = () => {
             increase="-12%"
             subtitleb="From last week"
             color="#d9534f"
-
           />
         </Grid>
         <Box
@@ -101,7 +99,6 @@ const HomeMain = () => {
             increase="+12%"
             subtitleb="From last week"
             color={colors.greenAccent[500]}
-
           />
         </Box>
         <Box
@@ -121,7 +118,6 @@ const HomeMain = () => {
             increase="0%"
             subtitleb="From last week"
             color="#203461"
-
           />
         </Box>
         <Box
@@ -141,7 +137,6 @@ const HomeMain = () => {
             increase="-12%"
             subtitleb="From last week"
             color="#d9534f"
-
           />
         </Box>
         {/* Row 2 */}
@@ -167,13 +162,6 @@ const HomeMain = () => {
                 >
                   Line Chart
                 </Typography>
-                {/* <Typography
-                  variant="h5"
-                  fontWeight="550"
-                  color={colors.grey[600]}
-                >
-                  subtitle
-                </Typography> */}
               </Box>
               <Box></Box>
             </Box>
@@ -231,9 +219,7 @@ const HomeMain = () => {
           borderRadius="10px"
         >
           <Box display="flex" gap={1}>
-            <Typography variant="h5"
-                  fontWeight="600"
-                  color={colors.grey[400]}>
+            <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
               Pie Chart
             </Typography>
             {/* <Typography variant="h5" fontWeight="500">
@@ -265,7 +251,7 @@ const HomeMain = () => {
                 ml="30px"
                 gutterBottom
                 fontWeight="600"
-                  color={colors.grey[400]}
+                color={colors.grey[400]}
               >
                 News
               </Typography>
@@ -299,8 +285,6 @@ const HomeMain = () => {
             fontWeight="600"
             sx={{ marginBottom: "15px" }}
             color={colors.grey[400]}
-
-            
           >
             Geography Based Traffic
           </Typography>
@@ -322,13 +306,11 @@ const HomeMain = () => {
             fontWeight="600"
             sx={{ marginBottom: "15px" }}
             color={colors.grey[400]}
-
-            
           >
             Geography Based Traffic
           </Typography>
           <Box height="200px">
-            <MyResponsiveStream  />
+            <MyResponsiveStream />
           </Box>
         </Box>
       </Box>

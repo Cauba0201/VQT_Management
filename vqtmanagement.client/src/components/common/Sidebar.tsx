@@ -4,15 +4,17 @@ import appRoutes from "../../routes/appRoutes";
 import SidebaritemCollapse from "./SidebaritemCollapse";
 import SidebarItem from "./SidebarItem";
 import logo_viettel from "../../assets/images/logo_no_bg.png";
+import sizeConfigs from "../../configs/sizeConfig";
 
 const Sidebar = () => {
   return (
     <Drawer
-      variant="permanent"
+      variant="permanent" 
       sx={{
         flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: "300px",
+          width: sizeConfigs.sidebar.width,
+
           boxSizing: "border-box",
           borderRight: "0px",
           // backgroundColor: "#ffffff",

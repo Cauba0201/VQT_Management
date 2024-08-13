@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   AppBar,
   Box,
@@ -19,17 +19,23 @@ import colorConfigs from "../../configs/colorConfigs";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import { VisibilityContext } from "../layout/MainLayout";
+import logo_viettel from "../../assets/images/logo_small3.png";
 
 const Topbar: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorsMode = useContext(colorModeContext);
   const { handleShowSidebar } = useContext(VisibilityContext);
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   const navigate = useNavigate();
   const handleNavigateLogin = () => {
     navigate("/login");
   };
+
+    // const toggleSidebar = () => {
+    //   setIsExpanded(!isExpanded);
+    // };
 
   return (
     <AppBar
@@ -44,14 +50,6 @@ const Topbar: React.FC = () => {
     >
       <Box>
         <Box display="flex" justifyContent="space-between" p={2.75}>
-          {/* <Box sx={{}}>
-            <Avatar
-              sx={{ width: "30vh", height: "5vh" }}
-              variant="square"
-              src={logo_viettel}
-            />
-          </Box> */}
-
           <Box display="flex" borderRadius="3px">
             <IconButton type="button" sx={{ p: 1 }} onClick={handleShowSidebar}>
               <MenuIcon />
@@ -70,7 +68,13 @@ const Topbar: React.FC = () => {
               marginTop: "5px",
             }}
           >
-            VQT Manager
+            <Box>
+              <Avatar
+                sx={{ width: "30vw", height: "3vh" }}
+                variant="square"
+                src={logo_viettel}
+              />
+            </Box>
           </Typography>
           <Box display="flex">
             <IconButton onClick={colorsMode.toggleColorMode}>

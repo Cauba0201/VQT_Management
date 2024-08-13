@@ -21,9 +21,10 @@ const MainLayout = () => {
   const handleShowSidebar = (): void => {
     setIsCollapsed(!isCollapsed);
   };
+
   return (
     <VisibilityContext.Provider value={{ isCollapsed, handleShowSidebar }}>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex" }}>  
         <Topbar />
         <Box
           component="main"
@@ -35,6 +36,7 @@ const MainLayout = () => {
             bgcolor: colorConfigs.mainBg,
             marginLeft: "300px",
             marginTop: "60px",
+           
           }}
         >
           {isCollapsed && <Sidebar /> ? <Sidebar /> : <SidebarIcon />}

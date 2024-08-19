@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Email": "john.doe@example.com",
+    "Password": "password123",
+    "Province": "Ontario",
+    "City": "Toronto"
+  },
+  {
+    "Id": 2,
+    "FirstName": "Jane",
+    "LastName": "Smith",
+    "Email": "jane.smith@example.com",
+    "Password": "password456",
+    "Province": "British Columbia",
+    "City": "Vancouver"
+  },
+  {
+    "Id": 3,
+    "FirstName": "Alice",
+    "LastName": "Johnson",
+    "Email": "alice.johnson@example.com",
+    "Password": "password789",
+    "Province": "Quebec",
+    "City": "Montreal"
+  },
+  {
+    "Id": 4,
+    "FirstName": "Bob",
+    "LastName": "Brown",
+    "Email": "bob.brown@example.com",
+    "Password": "password321",
+    "Province": "Alberta",
+    "City": "Calgary"
+  },
+  {
+    "Id": 5,
+    "FirstName": "Charlie",
+    "LastName": "Davis",
+    "Email": "charlie.davis@example.com",
+    "Password": "password654",
+    "Province": "Manitoba",
+    "City": "Winnipeg"
+  }
+]

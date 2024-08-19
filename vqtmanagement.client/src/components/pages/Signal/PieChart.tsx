@@ -57,7 +57,7 @@ const PieChart = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 5"
+          gridColumn="span 8"
           gridRow="span 5"
           bgcolor={colors.white[100]}
           p="30px"

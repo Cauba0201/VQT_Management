@@ -1,79 +1,71 @@
 "use client";
 
 import * as React from "react";
-// import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Checkbox from "@mui/material/Checkbox";
-import Divider from "@mui/material/Divider";
-import Stack from "@mui/material/Stack";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import dayjs from "dayjs";
-
+import {
+  Box,
+  Card,
+  Checkbox,
+  Divider,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import { useSelection } from "../../hooks/useSelection";
+import { useMemo, useState } from "react";
+// import axios from "axios";
 
-function noop(): void {
-  // do nothing
-}
+// function noop(): void {
+//   // do nothing
+// }
 
-export interface Customer {
-  id: string;
-  avatar: string;
-  name: string;
+// interface CustomerProps {
+//   id: number;
+//   name: string;
+//   email: string;
+//   location: string;
+//   phone: string;
+//   createdAt: string;
+//   author: string;
+// }
+
+interface UserData {
+  id: number;
+  firstName: string;
+  lastName: string;
   email: string;
-  address: { city: string; state: string; country: string; street: string };
   phone: string;
-  createdAt: Date;
+  state: string;
+  city: string;
+  author: string
 }
 
 interface CustomersTableProps {
-  count?: number;
-  page?: number;
-  rows?: Customer[];
-  rowsPerPage?: number;
+  customers: UserData[];
 }
 
-const data = [
-  {
-    id: 1,
-    name: 'Nguyen Van A',
-    email: 'abc@gmail.com',
-    location: 'Cau Giay, Ha Noi',
-    phone: '0912345678',
-    status: true,
-  },
-  {
-    id: 2,
-    name: 'Nguyen Van B',
-    email: 'abc@gmail.com',
-    location: 'Cau Giay, Ha Noi',
-    phone: '0912345678',
-    status: false,
-  },
-];
+export const CustomersTable: React.FC<CustomersTableProps> = ({
+  customers,
+}) => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-export function CustomersTable({
-  count = 0,
-  rows = [],
-  page = 0,
-  rowsPerPage = 0,
-}: CustomersTableProps): React.JSX.Element {
-  const rowIds = React.useMemo(() => {
-    return rows.map((customer) => customer.id);
-  }, [rows]);
+  const rowIds = useMemo(() => {
+    return customers.map((customer) => customer.id);
+  }, [customers]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } =
     useSelection(rowIds);
 
   const selectedSome =
-    (selected?.size ?? 0) > 0 && (selected?.size ?? 0) < rows.length;
-  const selectedAll = rows.length > 0 && selected?.size === rows.length;
+    (selected?.size ?? 0) > 0 && (selected?.size ?? 0) < customers.length;
+  const selectedAll =
+    customers.length > 0 && selected?.size === customers.length;
 
   return (
     <Card sx={{ borderRadius: "10px" }}>
@@ -99,63 +91,83 @@ export function CustomersTable({
               <TableCell sx={{ fontWeight: "bold" }}>Location</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>Phone</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>Time</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Author</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => {
-              const isSelected = selected?.has(item.id);
-
-              return (
-                <TableRow hover key={item.id} selected={isSelected}>
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={isSelected}
-                      onChange={(event) => {
-                        if (event.target.checked) {
-                          selectOne(item.id);
-                        } else {
-                          deselectOne(item.id);
-                        }
-                      }}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Stack
-                      sx={{ alignItems: "center" }}
-                      direction="item"
-                      spacing={2}
-                    >
-                      {/* <Avatar src={item.avatar} /> */}
-                      <Typography variant="subtitle2">{item.name}</Typography>
-                    </Stack>
-                  </TableCell>
-                  <TableCell>{item.email}</TableCell>
-                  <TableCell>
-                    {/* {item.address.city}, {item.address.state},{" "}
-                    {item.address.country} */}
-                    {item.location}
-                  </TableCell>
-                  <TableCell>{item.phone}</TableCell>
-                  <TableCell>
-                    {dayjs(item.createdAt).format("MMM D, YYYY")}
-                    
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {customers
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((item) => {
+                const isSelected = selected?.has(item.id);
+                return (
+                  <TableRow hover key={item.id} selected={isSelected}>
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={isSelected}
+                        onChange={(event) => {
+                          if (event.target.checked) {
+                            selectOne(item.id);
+                          } else {
+                            deselectOne(item.id);
+                          }
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Stack
+                        sx={{ alignItems: "center" }}
+                        direction="item"
+                        spacing={2}
+                      >
+                        {/* <Avatar src={item.avatar} /> */}
+                        <Typography variant="subtitle2">
+                          {item.lastName}
+                        </Typography>
+                      </Stack>
+                    </TableCell>
+                    <TableCell>{item.email}</TableCell>
+                    <TableCell>{item.city}</TableCell>
+                    <TableCell>{item.phone}</TableCell>
+                    <TableCell>
+                      {dayjs(item.phone).format("MMM D, YYYY")}
+                    </TableCell>
+                    {/* <TableCell>
+                      <Box
+                        sx={{
+                          height: "30px",
+                          width: "60px",
+                          bgcolor: `${
+                            item.author == "User" ? "#1976d2" : "red"
+                          }`, //"#1976d2"
+                          color: "white",
+                          padding: "5px",
+                          justifyContent: "center",
+                          textAlign: "center",
+                          borderRadius: "10px",
+                        }}
+                      >
+                        {item.author}
+                      </Box>
+                    </TableCell> */}
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </Box>
       <Divider />
       <TablePagination
         component="div"
-        count={count}
-        onPageChange={noop}
-        onRowsPerPageChange={noop}
+        count={customers.length}
+        onPageChange={(_event, newPage) => setPage(newPage)}
         page={page}
         rowsPerPage={rowsPerPage}
         rowsPerPageOptions={[5, 10, 25]}
+        onRowsPerPageChange={(event) => {
+          setRowsPerPage(Number(event.target.value));
+          setPage(0);
+        }}
       />
     </Card>
   );
-}
+};

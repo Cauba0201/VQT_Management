@@ -2,8 +2,48 @@ import { Box, Grid, Stack } from "@mui/material";
 import { AccountInfo } from "../../common/AccountInfo";
 import { AccountDetailsForm } from "../../common/AccountDetails";
 import { CustomersTable } from "../../common/CustomerTable";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const AccountManager = () => {
+interface UserData {
+  id: number;
+  // name: string;
+  // email: string;
+  // location: string;
+  // phone: string;
+  // createdAt: string;
+  // author: string;
+
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  state: string;
+  city: string;
+  author: string;
+
+}
+
+const AccountManager: React.FC = () => {
+  const [customers, setCustomers] = useState<UserData[]>([]);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await axios.get<UserData[]>("https://localhost:7074/api/User");
+        setCustomers(response.data);
+        console.log(response.data)
+      } catch (error) {
+        console.error("Error fetching customers", error);
+      }
+    };
+    fetchCustomers();
+
+  }, []);
+
+  const handleAddUser = (newUser: UserData) => {
+    setCustomers((prevCustomers) => [...prevCustomers, newUser]);
+  };
   return (
     <Stack spacing={2} sx={{ marginTop: "20px" }}>
       <Box
@@ -26,13 +66,13 @@ const AccountManager = () => {
               <AccountInfo />
             </Grid>
             <Grid lg={8} md={6} xs={12}>
-              <AccountDetailsForm />
+              <AccountDetailsForm onAddUser={handleAddUser} />
             </Grid>
           </Grid>
         </Box>
       </Box>
       <Box sx={{ bgcolor: "#d9d9d9", borderRadius: "10px", padding: "20px" }}>
-        <CustomersTable />
+        <CustomersTable customers={customers}/>
       </Box>
     </Stack>
   );

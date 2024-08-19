@@ -1,9 +1,5 @@
 import {
   Grid,
-  Select,
-  OutlinedInput,
-  MenuItem,
-  InputLabel,
   FormControl,
   Divider,
   CardHeader,
@@ -11,22 +7,82 @@ import {
   CardActions,
   Card,
   Button,
+  TextField,
 } from "@mui/material";
+import axios from "axios";
+import React, { ChangeEvent, useState } from "react";
 
 const states = [
-  { value: "alabama", label: "Alabama" },
-  { value: "new-york", label: "New York" },
-  { value: "san-francisco", label: "San Francisco" },
-  { value: "los-angeles", label: "Los Angeles" },
-] as const;
+  { value: "none", label: "--Author--" },
+  { value: "admin", label: "Admin" },
+  { value: "user", label: "User" },
+] 
 
-export function AccountDetailsForm(): React.JSX.Element {
+interface UserData {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  state: string;
+  city: string;
+  author: string
+}
+
+interface AccountDetailsFormProps {
+  onAddUser: (user: UserData) => void;
+}
+
+export function AccountDetailsForm({
+  onAddUser,
+}: AccountDetailsFormProps): React.JSX.Element {
+  const [userData, setUserData] = useState<UserData>({
+    id: 0,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    state: "",
+    city: "",
+    author:"",
+  });
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | { name?: string; value: string }>
+  ) => {
+    const { name, value } = event.target as HTMLInputElement;
+    setUserData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("https://localhost:7074/api/User", {
+        ...userData,
+      });
+      onAddUser(response.data.Data);
+      console.log(response.data.Data);
+    } catch (error) {
+      console.error("Error creating User", error);
+    }
+  };
+
+  const handleSave = async (event:React.FormEvent) => {
+    event.preventDefault();
+
+    try {
+      const update = await axios.put(`https://localhost:7074/api/User/${userData.id}`,{
+        ...userData
+      })
+      onAddUser(update.data.Data);
+
+    } catch (error) {
+      console.error("Error saving user",error)
+    }
+  }
+
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <Card
         sx={{ marginLeft: "10px", marginRight: "10px", borderRadius: "10px" }}
       >
@@ -36,10 +92,11 @@ export function AccountDetailsForm(): React.JSX.Element {
           <Grid container>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth required>
-                <InputLabel>First name</InputLabel>
-                <OutlinedInput
-                  defaultValue="Nguyen"
-                  label="First name"
+                {/* <InputLabel>Name</InputLabel> */}
+                <TextField
+                  value={userData.firstName}
+                  onChange={handleInputChange}
+                  label="Name"
                   name="firstName"
                   sx={{ borderRadius: "30px" }}
                 />
@@ -47,63 +104,73 @@ export function AccountDetailsForm(): React.JSX.Element {
             </Grid>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth required>
-                <InputLabel>Last name</InputLabel>
-                <OutlinedInput
-                  defaultValue="An"
-                  label="Last name"
+                <TextField
+                  value={userData.lastName}
+                  onChange={handleInputChange}
+                  label="Location"
                   name="lastName"
                   sx={{ borderRadius: "30px" }}
+
                 />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth required>
-                <InputLabel>Email address</InputLabel>
-                <OutlinedInput
-                  defaultValue="nguyenan@viettel.com.vn"
-                  label="Email address"
+                <TextField
+                  value={userData.email}
+                  onChange={handleInputChange}
+                  label="Email "
                   name="email"
                   sx={{ borderRadius: "30px" }}
+
                 />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth>
-                <InputLabel>Phone number</InputLabel>
-                <OutlinedInput
-                  label="Phone number"
+                <TextField
+                  label="Phone"
+                  value={userData.phone}
+                  onChange={handleInputChange}
                   name="phone"
-                  type="tel"
                   sx={{ borderRadius: "30px" }}
+
+                />
+              </FormControl>
+            </Grid>
+            
+            <Grid md={6} xs={12} sx={{ padding: "5px" }}>
+              <FormControl fullWidth>
+                <TextField
+                  label="Time"
+                  // value={userData.city}
+                  name="Time"
+                  sx={{ borderRadius: "30px" }}
+                  onChange={handleInputChange}
+
                 />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth>
-                <InputLabel>State</InputLabel>
-                <Select
-                  defaultValue="New York"
-                  label="State"
+                <TextField
+                  value={userData.state}
+                  select
+                  defaultValue="none"
+                  onChange={handleInputChange}
+                  // label="Author"
                   name="state"
-                  variant="outlined"
                   sx={{ borderRadius: "30px" }}
+                  SelectProps={{
+                    native: true,
+                  }}
                 >
                   {states.map((option) => (
-                    <MenuItem
-                      key={option.value}
-                      value={option.value}
-                      // sx={{ borderRadius: "30px" }}
-                    >
+                    <option  key={option.value} value={option.value}>
                       {option.label}
-                    </MenuItem>
+                    </option>
                   ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid md={6} xs={12} sx={{ padding: "5px" }}>
-              <FormControl fullWidth>
-                <InputLabel>City</InputLabel>
-                <OutlinedInput label="City" sx={{ borderRadius: "30px" }} />
+                </TextField>
               </FormControl>
             </Grid>
           </Grid>
@@ -116,6 +183,7 @@ export function AccountDetailsForm(): React.JSX.Element {
               width: "6vw",
             }}
             variant="contained"
+            onClick={handleSave}
           >
             Save
           </Button>

@@ -18,31 +18,15 @@ import {
 } from "@mui/material";
 import { useSelection } from "../../hooks/useSelection";
 import { useMemo, useState } from "react";
-// import axios from "axios";
-
-// function noop(): void {
-//   // do nothing
-// }
-
-// interface CustomerProps {
-//   id: number;
-//   name: string;
-//   email: string;
-//   location: string;
-//   phone: string;
-//   createdAt: string;
-//   author: string;
-// }
 
 interface UserData {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
+  location: string;
   phone: string;
-  state: string;
-  city: string;
-  author: string
+  createdAt: string;
+  author: string;
 }
 
 interface CustomersTableProps {
@@ -116,29 +100,27 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({
                     <TableCell>
                       <Stack
                         sx={{ alignItems: "center" }}
-                        direction="item"
+                        direction="row"
                         spacing={2}
                       >
-                        {/* <Avatar src={item.avatar} /> */}
-                        <Typography variant="subtitle2">
-                          {item.lastName}
-                        </Typography>
+                        <Typography variant="subtitle2">{item.name}</Typography>
                       </Stack>
                     </TableCell>
                     <TableCell>{item.email}</TableCell>
-                    <TableCell>{item.city}</TableCell>
+                    <TableCell>{item.location}</TableCell>
                     <TableCell>{item.phone}</TableCell>
                     <TableCell>
-                      {dayjs(item.phone).format("MMM D, YYYY")}
+                      {dayjs(item.createdAt).format("MMM D, YYYY")}
                     </TableCell>
-                    {/* <TableCell>
+                    <TableCell>
                       <Box
                         sx={{
                           height: "30px",
                           width: "60px",
-                          bgcolor: `${
-                            item.author == "User" ? "#1976d2" : "red"
-                          }`, //"#1976d2"
+                          bgcolor:
+                            item.author.toLowerCase() === "user"
+                              ? "#1976d2"
+                              : "red",
                           color: "white",
                           padding: "5px",
                           justifyContent: "center",
@@ -148,7 +130,7 @@ export const CustomersTable: React.FC<CustomersTableProps> = ({
                       >
                         {item.author}
                       </Box>
-                    </TableCell> */}
+                    </TableCell>
                   </TableRow>
                 );
               })}

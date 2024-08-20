@@ -16,17 +16,16 @@ const states = [
   { value: "none", label: "--Author--" },
   { value: "admin", label: "Admin" },
   { value: "user", label: "User" },
-] 
+];
 
 interface UserData {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
+  location: string;
   phone: string;
-  state: string;
-  city: string;
-  author: string
+  createdAt: string;
+  author: string;
 }
 
 interface AccountDetailsFormProps {
@@ -38,13 +37,12 @@ export function AccountDetailsForm({
 }: AccountDetailsFormProps): React.JSX.Element {
   const [userData, setUserData] = useState<UserData>({
     id: 0,
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
+    location: "",
     phone: "",
-    state: "",
-    city: "",
-    author:"",
+    createdAt: "",
+    author: "",
   });
 
   const handleInputChange = (
@@ -67,19 +65,21 @@ export function AccountDetailsForm({
     }
   };
 
-  const handleSave = async (event:React.FormEvent) => {
+  const handleSave = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const update = await axios.put(`https://localhost:7074/api/User/${userData.id}`,{
-        ...userData
-      })
+      const update = await axios.put(
+        `https://localhost:7074/api/User/${userData.id}`,
+        {
+          ...userData,
+        }
+      );
       onAddUser(update.data.Data);
-
     } catch (error) {
-      console.error("Error saving user",error)
+      console.error("Error saving user", error);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -92,12 +92,11 @@ export function AccountDetailsForm({
           <Grid container>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth required>
-                {/* <InputLabel>Name</InputLabel> */}
                 <TextField
-                  value={userData.firstName}
+                  value={userData.name}
                   onChange={handleInputChange}
                   label="Name"
-                  name="firstName"
+                  name="name"
                   sx={{ borderRadius: "30px" }}
                 />
               </FormControl>
@@ -105,12 +104,11 @@ export function AccountDetailsForm({
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth required>
                 <TextField
-                  value={userData.lastName}
+                  value={userData.location}
                   onChange={handleInputChange}
                   label="Location"
-                  name="lastName"
+                  name="location"
                   sx={{ borderRadius: "30px" }}
-
                 />
               </FormControl>
             </Grid>
@@ -122,7 +120,6 @@ export function AccountDetailsForm({
                   label="Email "
                   name="email"
                   sx={{ borderRadius: "30px" }}
-
                 />
               </FormControl>
             </Grid>
@@ -134,39 +131,35 @@ export function AccountDetailsForm({
                   onChange={handleInputChange}
                   name="phone"
                   sx={{ borderRadius: "30px" }}
-
                 />
               </FormControl>
             </Grid>
-            
+
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth>
                 <TextField
                   label="Time"
-                  // value={userData.city}
-                  name="Time"
+                  name="time"
                   sx={{ borderRadius: "30px" }}
                   onChange={handleInputChange}
-
                 />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12} sx={{ padding: "5px" }}>
               <FormControl fullWidth>
                 <TextField
-                  value={userData.state}
+                  value={userData.author}
                   select
                   defaultValue="none"
                   onChange={handleInputChange}
-                  // label="Author"
-                  name="state"
+                  name="author"
                   sx={{ borderRadius: "30px" }}
                   SelectProps={{
                     native: true,
                   }}
                 >
                   {states.map((option) => (
-                    <option  key={option.value} value={option.value}>
+                    <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
                   ))}

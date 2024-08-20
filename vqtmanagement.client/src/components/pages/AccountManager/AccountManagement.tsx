@@ -7,21 +7,12 @@ import axios from "axios";
 
 interface UserData {
   id: number;
-  // name: string;
-  // email: string;
-  // location: string;
-  // phone: string;
-  // createdAt: string;
-  // author: string;
-
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
+  location: string;
   phone: string;
-  state: string;
-  city: string;
+  createdAt: string;
   author: string;
-
 }
 
 const AccountManager: React.FC = () => {
@@ -30,15 +21,16 @@ const AccountManager: React.FC = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get<UserData[]>("https://localhost:7074/api/User");
+        const response = await axios.get<UserData[]>(
+          "https://localhost:7074/api/User"
+        );
         setCustomers(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching customers", error);
       }
     };
     fetchCustomers();
-
   }, []);
 
   const handleAddUser = (newUser: UserData) => {
@@ -72,7 +64,7 @@ const AccountManager: React.FC = () => {
         </Box>
       </Box>
       <Box sx={{ bgcolor: "#d9d9d9", borderRadius: "10px", padding: "20px" }}>
-        <CustomersTable customers={customers}/>
+        <CustomersTable customers={customers} />
       </Box>
     </Stack>
   );

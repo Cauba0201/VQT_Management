@@ -1,7 +1,7 @@
 import { RouteType } from "./config";
 import HomeMain from "../components/pages/HomeMain";
-import PageLayoutChildrens from "../components/pages/Signal/PageLayoutChildren";
-import AnalyticsPage from "../components/pages/Signal/ColumnChart";
+import PageLayoutChildrens from "../components/pages/Charts/PageLayoutChildren";
+import AnalyticsPage from "../components/pages/Charts/ColumnChart";
 import Latency from "../components/pages/Latency/Latency";
 import Contact from "../components/pages/Contact/Contact";
 import MapView from "../components/pages/MapView/MapView";
@@ -20,16 +20,17 @@ import TestPage from "../components/pages/TestPage/TestPage";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import HighQualityIcon from "@mui/icons-material/HighQuality";
 // import LoginPage from "../components/pages/LogIn/LoginPage";
-import BarChartt from "../components/pages/Signal/BarChart";
-import ColumnChart from "../components/pages/Signal/ColumnChart";
-import AreaChart from "../components/pages/Signal/AreaChart";
-import PieChart from "../components/pages/Signal/PieChart";
+import BarChartt from "../components/pages/Charts/BarChart";
+import ColumnChart from "../components/pages/Charts/ColumnChart";
+import AreaChart from "../components/pages/Charts/AreaChart";
+import PieChart from "../components/pages/Charts/PieChart";
+import SankeyChart from "../components/pages/Charts/SankeyChartPage";
 
 const appRoutes: RouteType[] = [
   {
     index: true,
     element: <HomeMain />,
-    state: "login",
+    state: "home",
   },
   {
     path: "/home",
@@ -105,6 +106,15 @@ const appRoutes: RouteType[] = [
         state: "chart.piechart",
         sidebarProps: {
           displayText: "Pie Chart",
+          icon: <BarChartIcon />,
+        },
+      },
+      {
+        path: "/chart/sankeychart",
+        element: <SankeyChart/>,
+        state: "chart.sankeychart",
+        sidebarProps: {
+          displayText: "Sankey Chart",
           icon: <BarChartIcon />,
         },
       },

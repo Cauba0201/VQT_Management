@@ -34,7 +34,7 @@ const MainLayout = () => {
             minHeight: "100vh",
             width: "100%",
             bgcolor: colorConfigs.mainBg,
-            marginLeft: "300px",
+            marginLeft: isCollapsed ? "300px" : "70px",
             marginTop: "60px",
            
           }}

@@ -7,11 +7,12 @@ import {
   ListItemButton,
   ListItemIcon,
 } from "@mui/material";
-import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
-import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+// import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
+// import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import SidebarItem from "./SidebarItem";
 import { RootState } from "../redux/store";
 import colorConfigs from "../../configs/colorConfigs";
+import SidebarIconItem from "./SidebarIconItem";
 
 type Props = {
   item: RouteType;
@@ -42,7 +43,7 @@ const SidebarIconCollapse = ({ item }: Props) => {
           {item.sidebarProps.icon}
         </ListItemIcon>
       
-        {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}
+        {/* {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />} */}
       </ListItemButton>
       <Collapse in={open} timeout="auto">
         <List>
@@ -51,7 +52,7 @@ const SidebarIconCollapse = ({ item }: Props) => {
               route.child ? (
                 <SidebarIconCollapse item={route} key={index} />
               ) : (
-                <SidebarItem item={route} key={index} />
+                <SidebarIconItem item={route} key={index} />
               )
             ) : null
           )}

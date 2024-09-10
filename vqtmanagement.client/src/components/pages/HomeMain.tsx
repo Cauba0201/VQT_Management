@@ -8,7 +8,6 @@ import PieChart from "../common/chart-data/PieChart";
 import NewItems from "../common/NewItems";
 import { newItems } from "../../data/mockData";
 import GeographyChart from "../common/chart-data/MapView";
-import MyResponsiveStream from "../common/chart-data/monoLineChart";
 
 const HomeMain = () => {
   const theme = useTheme();
@@ -142,7 +141,7 @@ const HomeMain = () => {
         {/* Row 2 */}
         <Box
           gridColumn="span 12"
-          gridRow="span 2"
+          gridRow="span 3"
           bgcolor={colors.white[100]}
           borderRadius="10px"
         >
@@ -166,13 +165,14 @@ const HomeMain = () => {
               <Box></Box>
             </Box>
           </Box>
-          <Box height="250px" m="-20px 0 0 0">
+          <Box height="350px" m="-20px 0 0 0">
             <LineChart isDashboard={true} />
           </Box>
         </Box>
+
         <Box
           gridColumn="span 6"
-          gridRow="span 2"
+          gridRow="span 3"
           bgcolor={colors.white[100]}
           p="30px"
           borderRadius="10px"
@@ -181,19 +181,16 @@ const HomeMain = () => {
             <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
               Pie Chart
             </Typography>
-            {/* <Typography variant="h5" fontWeight="500">
-              Campaign
-            </Typography> */}
           </Box>
 
-          <Box height="250px" m="-20px 0 0 0">
+          <Box height="350px" m="-20px 0 0 0">
             <PieChart />
           </Box>
         </Box>
         {/* Row 3 */}
         <Box
-          gridColumn="span 5"
-          gridRow="span 2"
+          gridColumn="span 8"
+          gridRow="span 4"
           bgcolor={colors.white[100]}
           p="30px"
           borderRadius="10px"
@@ -202,37 +199,38 @@ const HomeMain = () => {
             <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
               Bar Chart
             </Typography>
-            {/* <Typography variant="h5" fontWeight="500">
-              Campaign
-            </Typography> */}
           </Box>
 
-          <Box height="250px" m="-20px 0 0 0">
+          <Box height="530px" m="-20px 0 0 0">
             <BarChart />
           </Box>
         </Box>
+
+        {/* Row 4 */}
         <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          bgcolor={colors.white[100]}
-          p="30px"
+          sx={{
+            gridColumn: "span 10",
+            gridRow: "span 4",
+            backgroundColor: colors.white[100],
+            padding: "30px",
+          }}
           borderRadius="10px"
         >
-          <Box display="flex" gap={1}>
-            <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
-              Pie Chart
-            </Typography>
-            {/* <Typography variant="h5" fontWeight="500">
-              Campaign
-            </Typography> */}
-          </Box>
-
-          <Box height="250px" m="-20px 0 0 0">
-            <PieChart />
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ marginBottom: "15px" }}
+            color={colors.grey[400]}
+          >
+            Geography Based Traffic
+          </Typography>
+          <Box height="500px">
+            <GeographyChart />
           </Box>
         </Box>
+
         <Box
-          gridColumn="span 9"
+          gridColumn="span 8"
           gridRow="span 4"
           bgcolor={colors.white[100]}
           borderRadius="10px"
@@ -268,49 +266,6 @@ const HomeMain = () => {
                 ))}
               </List>
             </Grid>
-          </Box>
-        </Box>
-        {/* Row 4 */}
-        <Box
-          sx={{
-            gridColumn: "span 9",
-            gridRow: "span 2",
-            backgroundColor: colors.white[100],
-            padding: "30px",
-          }}
-          borderRadius="10px"
-        >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ marginBottom: "15px" }}
-            color={colors.grey[400]}
-          >
-            Geography Based Traffic
-          </Typography>
-          <Box height="200px">
-            <GeographyChart isDashboard={true} />
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            gridColumn: "span 18",
-            gridRow: "span 3",
-            backgroundColor: colors.white[100],
-            padding: "30px",
-          }}
-          borderRadius="10px"
-        >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ marginBottom: "15px" }}
-            color={colors.grey[400]}
-          >
-            Geography Based Traffic
-          </Typography>
-          <Box height="200px">
-            <MyResponsiveStream />
           </Box>
         </Box>
       </Box>

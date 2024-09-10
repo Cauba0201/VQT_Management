@@ -9,17 +9,26 @@ import sizeConfigs from "../../configs/sizeConfig";
 const Sidebar = () => {
   return (
     <Drawer
-      variant="permanent" 
+      variant="permanent"
       sx={{
         flexShrink: 0,
+        // transition: (theme) =>
+        //   theme.transitions.create("width", {
+        //     easing: theme.transitions.easing.sharp,
+        //     duration: theme.transitions.duration.leavingScreen,
+        //   }),
         "& .MuiDrawer-paper": {
           width: sizeConfigs.sidebar.width,
-
           boxSizing: "border-box",
           borderRight: "0px",
-          // backgroundColor: "#ffffff",
-          backgroundColor: "#d9d9d9",
+          backgroundColor: "#ffffff",
+          // backgroundColor: "#d9d9d9",
           color: colorConfigs.sidebar.color,
+          // transition: (theme) =>
+          //   theme.transitions.create("width", {
+          //     easing: theme.transitions.easing.sharp,
+          //     duration: theme.transitions.duration.enteringScreen,
+          //   }),
         },
       }}
     >

@@ -4,7 +4,6 @@ import colorConfigs from "../../configs/colorConfigs";
 import SidebarIconCollapse from "./SidebarIconCollapse";
 import SidebarIconItem from "./SidebarIconItem";
 import sizeConfigs from "../../configs/sizeConfig";
-// import { useState } from "react";
 
 const SidebarIcon = () => {
   
@@ -23,7 +22,7 @@ const SidebarIcon = () => {
           },
         }}
       >
-        <Box sx={{ marginTop: "84px" }}>
+        <Box sx={{ marginTop: "76px" }}>
           <List>
             {appRoutes.map((route, index) =>
               route.sidebarProps ? (

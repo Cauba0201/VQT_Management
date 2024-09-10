@@ -26,22 +26,27 @@ const Topbar: React.FC = () => {
   const colors = tokens(theme.palette.mode);
   const colorsMode = useContext(colorModeContext);
   const { handleShowSidebar } = useContext(VisibilityContext);
-  // const [isExpanded, setIsExpanded] = useState(false);
+  const [isSidebarVisible, setSidebarVisible] = useState(true);
 
   const navigate = useNavigate();
   const handleNavigateLogin = () => {
     navigate("/login");
   };
 
-    // const toggleSidebar = () => {
-    //   setIsExpanded(!isExpanded);
-    // };
+  const toggleSidebar = () => {
+    setSidebarVisible((prev) => !prev);
+    handleShowSidebar();
+  };
 
   return (
     <AppBar
       position="fixed"
       sx={{
-        width: `calc(100% - ${sizeConfigs.sidebar.width})`,
+        width: `calc(100% - ${
+          isSidebarVisible
+            ? sizeConfigs.sidebar.width
+            : sizeConfigs.sidebarHide.width
+        })`,
         ml: sizeConfigs.sidebar.width,
         boxShadow: "unset",
         backgroundColor: colorConfigs.topbar.bg,
@@ -51,7 +56,7 @@ const Topbar: React.FC = () => {
       <Box>
         <Box display="flex" justifyContent="space-between" p={2.75}>
           <Box display="flex" borderRadius="3px">
-            <IconButton type="button" sx={{ p: 1 }} onClick={handleShowSidebar}>
+            <IconButton type="button" sx={{ p: 1 }} onClick={toggleSidebar}>
               <MenuIcon />
             </IconButton>
             <Box bgcolor={colors.primary[400]}>

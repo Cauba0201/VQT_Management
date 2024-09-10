@@ -12,7 +12,6 @@ const generateRoute = (routes: RouteType[]): ReactNode => {
         index
         path={route.path}
         element={<PageWrapper state={route.state}>{route.element}</PageWrapper>}
-        // element={<LoginPage />}
         key={index}
       />
     ) : (

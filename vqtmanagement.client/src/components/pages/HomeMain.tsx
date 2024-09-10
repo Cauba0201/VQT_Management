@@ -179,7 +179,7 @@ const HomeMain = () => {
         >
           <Box display="flex" gap={1}>
             <Typography variant="h5" fontWeight="600" color={colors.grey[400]}>
-              Pie Chart
+              Biều đồ phần trăm Peering and Transit
             </Typography>
           </Box>
 
